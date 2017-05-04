@@ -1,0 +1,26 @@
+.navbar {
+    background: none;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.navbar-nav {
+    float: right;
+    background: black;
+}
+
+.navbar-collapse {
+    border: none;
+    border-style: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.navbar-right {
+    margin-right: 10px;
+}
+
+#logo {
+    height: 80px;
+}
