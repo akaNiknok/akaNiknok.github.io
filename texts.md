@@ -1,6 +1,6 @@
 # Hi, I'm Austin!
 
-I am a BS Management Information Systems graduate from Ateneo de Manila University skilled in IT project management, programming and applications/web development, with a background in Data Science and Machine Learning.
+I am a BS Management Information Systems graduate from Ateneo de Manila University skilled in systems analysis, IT project management, programming and applications/web development, with a background in Data Science and Machine Learning.
 
 ## Skills
 
