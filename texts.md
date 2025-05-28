@@ -40,17 +40,16 @@ What set this project apart was our use of a **hybrid iterative project manageme
 
 This practicum project was part of the Ateneo Arete Sandbox program, focused on creating a public geospatial tool for visualizing blue carbon ecosystems—particularly mangrove restoration sites—as part of climate change mitigation efforts.
 
-As a Database and Web Development Consultant, I played a leading role in backend development, integrating geospatial data, and co-leading deployment. Despite a small team and limited budget, we successfully delivered a functional prototype of the platform using cost-effective tools like Firebase and Mapbox.
+As a Database and Web Development Consultant, I contributed significantly to systems analysis and backend development. Our small team conducted a full analysis of the project’s requirements, technological constraints, and stakeholder needs to determine a cost-effective and scalable solution. This included evaluating hosting options (eventually choosing Firebase), comparing GIS tools, and determining how to structure and visualize geospatial data.
 
-A standout challenge was deployment, our chosen stack included new tools and frameworks unfamiliar to most of the team. I led efforts to resolve integration issues between QGIS, Mapbox, Firebase, and the frontend framework. This involved heavy troubleshooting and taught me the importance of realistic planning, interoperability awareness, and adaptability under pressure.
+On the technical side, I focused on backend integration, helping manage the flow of data from QGIS to the database to an interactive Mapbox map embedded on the site. I also co-led deployment, navigating integration issues with unfamiliar frontend frameworks and Firebase hosting. These challenges honed my skills in problem-solving, cross-platform integration, and realistic project planning.
 
-The practicum sharpened not only my technical skills in backend systems and geospatial data integration, but also my project management mindset—balancing quality with cost, handling stakeholder communication, and making strategic tech decisions under real-world limitations.
+The experience deepened my understanding of geospatial data systems, and provided hands-on application of systems analysis, stakeholder communication, and resource management—all under real-world constraints.
 
 - Role: Database & Web Development Consultant
 - Technologies: Mapbox, Firebase, QGIS, Web Frameworks (unspecified), Geospatial Databases
-- Type: Back-End Dev, Web Dev
-- Highlights: Deployment Leadership, Cost-Conscious Tech Planning, Environmental Impact
-
+- Type: Systems Analysis, Back-End Dev, Web Dev
+- Highlights: Systems Analysis, Deployment Leadership, Cost-Conscious Tech Planning, Environmental Impact
 
 ### Project Manager App
 
