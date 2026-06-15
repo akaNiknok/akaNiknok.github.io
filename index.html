@@ -1,53 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Austin G. Imperial</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <title>Austin G. Imperial — AI Project Manager</title>
+  <meta name="description" content="Austin Imperial — AI Project Manager and builder. I bring people, process, and technology into the same rhythm.">
+
+  <meta property="og:title" content="Austin G. Imperial — AI Project Manager">
+  <meta property="og:description" content="A project manager who also builds. I make complicated things feel calm.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Set theme before paint to avoid a flash of the wrong theme.
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <div class="container-sm">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <nav class="navbar navbar-expand-sm sticky-top bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">AUSTIN G. IMPERIAL</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Austin G. Imperial — home">AGI</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#work">work</a>
+        <a href="#about">about</a>
+        <a href="#contact">say hi</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+          <span class="theme-icon theme-icon-sun" aria-hidden="true"></span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarToggler">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
+  </header>
 
-    <div class="row mt-5">
+  <main id="main">
+    <span id="top"></span>
 
-      <div class="col-md-8">
-        <h1>Hello! I'm Austin, a project manager in the Philippines.</h1>
-        <p>I am a BS Management Information Systems graduate from Ateneo de Manila University skilled in IT project management, programming and applications/web development, with a background in Data Science and Machine Learning.</p>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="status reveal">
+          <span class="status-dot" aria-hidden="true"></span>
+          Currently AI Project Manager at Pareto.ai
+        </p>
+        <h1 class="reveal">Hi, I'm Austin — I make complicated things feel calm.</h1>
+        <p class="lede reveal">
+          A project manager who also builds. I bring people, process, and technology
+          into the same rhythm — and the people I work with tend to want to work with me again.
+        </p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="#contact">Let's talk</a>
+          <a class="btn btn-text" href="resume.html" target="_blank" rel="noopener">Read my résumé <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="hero-portrait reveal">
+        <img src="Grad_Pic_Casual.png" alt="Portrait of Austin G. Imperial" width="360" height="360">
+      </div>
+    </section>
+
+    <!-- About + Experience -->
+    <section class="section" id="about">
+      <p class="section-label reveal">About</p>
+      <div class="prose">
+        <p class="reveal">
+          I'm a BS Management Information Systems graduate from Ateneo de Manila University
+          (specializing in Data Science &amp; Analytics), now working as an AI Project Manager.
+          I'm a systems thinker at heart: I'd rather build something once and well than solve
+          the same problem twice. My favorite work sits where coordination meets engineering —
+          turning messy delivery into calm, well-run systems.
+        </p>
       </div>
 
-      <div class="col-md-4">
-        <img src="Grad_Pic_Casual.png" alt="Austin G. Imperial" class="img-fluid rounded shadow">
+      <p class="section-label reveal" style="margin-top:3.5rem">Experience</p>
+
+      <ol class="timeline">
+        <li class="reveal">
+          <div class="timeline-head">
+            <h3>AI Project Manager · Pareto.ai</h3>
+            <span class="timeline-date">Nov 2025 — present</span>
+          </div>
+          <p>
+            I coordinate delivery across project managers, QA, and research engineers for a
+            frontier-AI data company. In my first months I grew from supporting two projects to
+            owning and supporting seven — moving from Support PM to Lead PM on one project and
+            holding an operational seat on the team's most complex cross-functional workstream.
+          </p>
+          <p>
+            I tend to build the systems other people then rely on: I redesigned a project
+            progress tracker (well received by experts, QA, and fellow PMs), authored a
+            RACI-based project workflow document, and led documentation migrations ahead of a
+            platform transition. I also paired Claude Code with an internal API to surface data
+            errors faster. Over roughly my first 90 days I leveled from junior (IC1) toward mid
+            (IC2).
+          </p>
+        </li>
+
+        <li class="reveal">
+          <div class="timeline-head">
+            <h3>Assistant Project Manager &amp; System Developer · ACTS Achi &amp; Ahia, Inc.</h3>
+            <span class="timeline-date">2024 — 2025</span>
+          </div>
+          <p>
+            Led 6+ bi-weekly sprints on a hybrid-iterative framework to refine a review center's
+            enrollment system. I automated data consolidation and integrated Google Sheets with
+            the enrollment workflow — cutting staff overtime ~80% (1,144 → 208 hours a year) and
+            contributing roughly <strong>₱625,540 in annual savings</strong>.
+          </p>
+        </li>
+
+        <li class="reveal">
+          <div class="timeline-head">
+            <h3>Lead Backend Developer · BlueMap (Ateneo Arete Sandbox)</h3>
+            <span class="timeline-date">2023 — 2024</span>
+          </div>
+          <p>
+            Built the backend for a public geospatial tool visualizing blue-carbon restoration
+            sites, moving data from QGIS through Firebase to an interactive Mapbox map, and
+            co-leading deployment to a live product.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- What people say -->
+    <section class="section" id="recognition">
+      <p class="section-label reveal">What people say</p>
+
+      <blockquote class="pull-quote reveal">
+        <p>“One of our MVPs here. If you want something done right, ask a busy person.”</p>
+        <cite>— a peer project manager</cite>
+      </blockquote>
+
+      <div class="quote-grid">
+        <blockquote class="quote reveal">
+          <p>“The right mindset, curiosity, and initiative — a strong foundation for growth.”</p>
+          <cite>— a team lead</cite>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>“Among all the new PMs, he's the one who stood out to me the most.”</p>
+          <cite>— a fellow project manager</cite>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>“Saw all the work you did over the weekend — everything looks so great.”</p>
+          <cite>— a data delivery lead</cite>
+        </blockquote>
       </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="section" id="work">
+      <p class="section-label reveal">Selected work</p>
+      <ul class="work-list" id="work-list" aria-label="Selected projects"></ul>
+      <button class="btn btn-text work-more" id="work-more" type="button" aria-expanded="false"></button>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-contact" id="contact">
+      <p class="section-label reveal">Say hi</p>
+      <h2 class="reveal">Let's build something calm.</h2>
+      <p class="lede reveal">
+        Open to project management roles where I can grow. The fastest way to reach me is email.
+      </p>
+      <ul class="contact-links reveal">
+        <li><a href="mailto:austingimperial@gmail.com">austingimperial@gmail.com</a></li>
+        <li><a href="https://ph.linkedin.com/in/austin-imperial" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/akaNiknok" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="resume.html" target="_blank" rel="noopener">Résumé</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Austin G. Imperial</span>
+    <span class="footer-links">
+      <a href="mailto:austingimperial@gmail.com">Email</a>
+      <a href="https://ph.linkedin.com/in/austin-imperial" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/akaNiknok" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+
+  <!-- Project detail dialog -->
+  <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" type="button" aria-label="Close" data-close>&times;</button>
+      <p class="modal-eyebrow" id="modal-eyebrow"></p>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-tech" id="modal-tech"></div>
     </div>
+  </div>
 
-
-</div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <script src="projects.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
