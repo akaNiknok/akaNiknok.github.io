@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  CANONICAL RÉSUMÉ — this is the single source of truth.
+  HOW IT WORKS:
+    1. Ask Claude to edit this file (e.g. "add a new role to my résumé").
+    2. Open this page (locally or at https://akaniknok.github.io/resume.html).
+    3. Click "Download PDF" → in the print dialog choose
+       "Save as PDF", set margins to Default, and save.
+  Keep Pareto-internal details out (see the anonymization note in the repo).
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Austin G. Imperial — Résumé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #0891b2;
+      --text: #1a1c20;
+      --soft: #4b505a;
+      --faint: #7a7f8a;
+      --line: #e2e4e8;
+    }
+    * { box-sizing: border-box; }
+    html { background: #f3f4f6; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* Floating toolbar (screen only) */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      background: rgba(243, 244, 246, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .toolbar a { color: var(--soft); text-decoration: none; font-size: 13px; }
+    .toolbar a:hover { color: var(--accent); }
+    .download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #06b6d4;
+      color: #04222a;
+      border: none;
+      font: inherit;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .download:hover { transform: translateY(-1px); }
+
+    /* The page sheet */
+    .sheet {
+      max-width: 820px;
+      margin: 0 auto 3rem;
+      background: #fff;
+      padding: 48px 56px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 30px rgba(0,0,0,0.06);
+      border-radius: 4px;
+    }
+
+    header h1 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .role { color: var(--accent); font-weight: 600; font-size: 15px; margin: 4px 0 10px; }
+    .contact { color: var(--soft); font-size: 13px; margin: 0; }
+    .contact a { color: var(--soft); text-decoration: none; }
+    .contact a:hover { color: var(--accent); }
+    .contact span { color: var(--faint); margin: 0 8px; }
+
+    .summary { color: var(--soft); margin: 16px 0 0; max-width: 64ch; }
+
+    h2 {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+      margin: 28px 0 14px;
+    }
+
+    .job { margin-bottom: 18px; }
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .job-title { font-weight: 600; font-size: 15px; margin: 0; }
+    .job-meta { color: var(--faint); font-size: 13px; white-space: nowrap; }
+    .job ul { margin: 8px 0 0; padding-left: 18px; }
+    .job li { margin-bottom: 5px; color: var(--soft); }
+    .job strong { color: var(--text); }
+
+    .skills p { margin: 0 0 8px; color: var(--soft); }
+    .skills strong { color: var(--text); font-weight: 600; }
+
+    .edu p { margin: 0 0 4px; }
+    .edu .sub { color: var(--soft); font-size: 13px; margin: 0 0 10px; }
+    .edu b { font-weight: 600; }
+    .edu .yr { color: var(--faint); font-size: 13px; }
+
+    @media (max-width: 700px) {
+      .sheet { padding: 32px 22px; }
+      .job-head { flex-direction: column; gap: 2px; }
+    }
+
+    /* ---------- Print / PDF ---------- */
+    @page { size: A4; margin: 14mm; }
+    @media print {
+      html, body { background: #fff; }
+      .toolbar { display: none; }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      a { color: var(--text) !important; }
+      .role { color: #0e7490 !important; }
+      h2 { color: #333 !important; }
+      .job, .edu p { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a href="index.html">← Back to site</a>
+    <button class="download" type="button" onclick="window.print()">⬇ Download PDF</button>
+  </div>
+
+  <article class="sheet">
+    <header>
+      <h1>Austin G. Imperial</h1>
+      <p class="role">AI / IT Project Manager · Builder</p>
+      <p class="contact">
+        <a href="mailto:austingimperial@gmail.com">austingimperial@gmail.com</a><span>·</span>+63 965 948 7916<span>·</span>Quezon City, Metro Manila, PH
+        <br>
+        <a href="https://ph.linkedin.com/in/austin-imperial">linkedin.com/in/austin-imperial</a><span>·</span><a href="https://github.com/akaNiknok">github.com/akaNiknok</a>
+      </p>
+      <p class="summary">
+        Project manager who also builds, with a strong foundation in data science, full-stack
+        development, and system optimization. I bring people, process, and technology into the
+        same rhythm — turning messy delivery into calm, well-run systems. Experienced in Agile
+        delivery, stakeholder coordination, API integration, and shipping scalable,
+        cost-effective solutions.
+      </p>
+    </header>
+
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <p class="job-title">AI Project Manager — Pareto.ai</p>
+          <span class="job-meta">Nov 2025 – Present</span>
+        </div>
+        <ul>
+          <li>Coordinate delivery across project managers, QA, and research engineers for <strong>a frontier-AI data company</strong>.</li>
+          <li>Grew from supporting 2 projects to owning/supporting 7 in the first months — from Support PM to <strong>Lead PM</strong> on one project, plus an operational seat on the team's most complex cross-functional workstream.</li>
+          <li>Redesigned a project progress tracker adopted across experts, QA, and fellow PMs; authored a RACI-based project workflow document; led documentation migrations ahead of a platform transition.</li>
+          <li>Paired Claude Code with an internal API to surface data errors and quality issues faster.</li>
+          <li>Leveled from junior (IC1) toward mid (IC2) within roughly the first 90 days, with consistent peer and lead recognition.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <p class="job-title">Assistant Project Manager &amp; System Developer — ACTS Achi &amp; Ahia, Inc.</p>
+          <span class="job-meta">2024 – 2025</span>
+        </div>
+        <ul>
+          <li>Led 6+ bi-weekly sprints using a hybrid-iterative framework, ensuring stakeholder alignment and adaptability.</li>
+          <li>Managed the risk register and budget tracking in Excel; used Trello for task management and sprint planning.</li>
+          <li>Automated consolidation of operational data with Excel Macros and PivotTables, producing department-specific reports.</li>
+          <li>Demonstrated an <strong>80% reduction in IT and Customer Success overtime</strong> (1,144 → 208 hours annually), proving ROI.</li>
+          <li>Integrated Google Sheets with the enrollment system for real-time, cross-department data synchronization.</li>
+          <li>Contributed to <strong>₱625,540 in annual savings</strong> by streamlining workflows and centralizing data management.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <p class="job-title">Lead Backend Developer — BlueMap: Blue Carbon Restoration Database</p>
+          <span class="job-meta">2023 – 2024</span>
+        </div>
+        <ul>
+          <li>Led backend development for a geospatial web tool, designing server-side architecture with two other developers.</li>
+          <li>Managed data flow from QGIS to Firebase and Mapbox for accurate visualization of restoration sites.</li>
+          <li>Oversaw deployment to Firebase and optimized database design for faster map interactions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2>Core Skills</h2>
+      <p><strong>Project management:</strong> Agile / Scrum, hybrid iterative delivery, requirements gathering, stakeholder communication, sprint planning, RACI / workflow design, process &amp; documentation systems.</p>
+      <p><strong>Programming &amp; development:</strong> Python, JavaScript, PHP, SQL, HTML, CSS, C/C++, Ruby; system &amp; API integration.</p>
+      <p><strong>Data science &amp; analytics:</strong> data cleaning &amp; wrangling, visualization, reporting, geospatial analysis, machine learning.</p>
+      <p><strong>Tools &amp; platforms:</strong> Git/GitHub, Firebase, Google Sheets &amp; Apps Script, Excel &amp; Macros, Trello, Asana, Claude Code.</p>
+    </section>
+
+    <section class="edu">
+      <h2>Education</h2>
+      <p><b>Ateneo de Manila University</b> <span class="yr">— 2025</span></p>
+      <p class="sub">BS Management Information Systems · Specialization: Data Science &amp; Analytics. (Previously BS Applied Mathematics – Minor in Data Science; coursework in Mathematical Analysis, Fundamentals of Computing, Computer Simulation &amp; Modelling.)</p>
+      <p><b>Claret School of Quezon City</b> <span class="yr">— 2020</span></p>
+      <p class="sub">High School Diploma · Consistent honor student.</p>
+    </section>
+
+    <section class="skills">
+      <h2>Languages</h2>
+      <p>English · Filipino</p>
+    </section>
+  </article>
+</body>
+</html>
