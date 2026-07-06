@@ -25,9 +25,9 @@ I am a BS Management Information Systems graduate from Ateneo de Manila Universi
 
 ## Projects
 
-### System and Process Refinement for ACTS Achi & Ahia, Inc.
+### System and Process Refinement for [ACTS Achi & Ahia, Inc.](https://www.acts.com.ph/)
 
-Recognized as **one of the best capstone projects by our defense panel**, this ground-up IT solution was developed for ACTS Achi & Ahia, Inc., a review center struggling with inefficient enrollment workflows.
+Recognized as **one of the best capstone projects by our defense panel**, this ground-up IT solution was developed for [ACTS Achi & Ahia, Inc.](https://www.acts.com.ph/), a review center struggling with inefficient enrollment workflows.
 
 As the system developer and an assistant to our project manager, I helped lead both the technical implementation and project coordination. We identified process bottlenecks and optimized ACTS’ enrollment system using Cognito Forms, Google Sheets, and Google Apps Script, building a semi-automated, integrated solution that improved data accuracy and reduced manual work.
 

@@ -11,7 +11,7 @@ window.PROJECTS = [
     role: "Assistant Project Manager & System Developer",
     featured: true,
     body: [
-      "Recognized as one of the best capstone projects by our defense panel, this ground-up IT solution was built for ACTS Achi & Ahia, Inc., a review center struggling with inefficient enrollment workflows.",
+      "Recognized as one of the best capstone projects by our defense panel, this ground-up IT solution was built for <a href='https://www.acts.com.ph/' target='_blank' rel='noopener'>ACTS Achi &amp; Ahia, Inc.</a>, a review center struggling with inefficient enrollment workflows.",
       "As the system developer and assistant to the project manager, I helped lead both the technical implementation and the project coordination. We identified process bottlenecks and optimized the enrollment system using Cognito Forms, Google Sheets, and Google Apps Script — a semi-automated, integrated solution that improved data accuracy and removed repetitive manual work.",
       "We ran the project as a hybrid-iterative effort: focused two-week sprints with continuous stakeholder feedback, system testing, and user acceptance testing, closing each iteration with a stakeholder review. The result was a substantial reduction in staff overtime (1,144 → 208 hours/year, ~80%) and roughly ₱625,540 in annual savings."
     ],

@@ -1,10 +1,10 @@
 # Home Page
 
-We are PixelLab, a dedicated team of IT consultants undertaking our capstone project by partnering with ACTS Achi & Ahia, Inc. We specialize in analyzing business processes and implementing targeted IT solutions. For this project, "System and Process Refinement of ACTS' Enrollment," we focused on identifying bottlenecks and optimizing their current enrollment system to improve efficiency, reduce operational costs, and enhance the experience for both ACTS staff and their students.
+We are PixelLab, a dedicated team of IT consultants undertaking our capstone project by partnering with [ACTS Achi & Ahia, Inc.](https://www.acts.com.ph/) We specialize in analyzing business processes and implementing targeted IT solutions. For this project, "System and Process Refinement of ACTS' Enrollment," we focused on identifying bottlenecks and optimizing their current enrollment system to improve efficiency, reduce operational costs, and enhance the experience for both ACTS staff and their students.
 
 ## The Challenge
 
-ACTS Achi & Ahia, a respected review school, faces significant challenges with their current enrollment process. Inefficiencies in their system, built on Cognito Forms and multiple databases, lead to excessive overtime for IT and Customer Service Unit (CSU) staff, high operational costs (including overtime and inefficiency costs), data inaccuracies like empty database rows and incorrect slot counts, and potential impacts on staff morale and productivity.
+[ACTS Achi & Ahia](https://www.acts.com.ph/), a respected review school, faces significant challenges with their current enrollment process. Inefficiencies in their system, built on Cognito Forms and multiple databases, lead to excessive overtime for IT and Customer Service Unit (CSU) staff, high operational costs (including overtime and inefficiency costs), data inaccuracies like empty database rows and incorrect slot counts, and potential impacts on staff morale and productivity.
 
 ## The Solution
 
@@ -12,11 +12,11 @@ Our project focuses on optimizing ACTS' current Cognito Forms setup and consolid
 
 ## The Impact
 
-Implementing these refinements is projected to deliver significant positive outcomes for ACTS Achi & Ahia. By streamlining the enrollment workflow, we anticipate a substantial reduction in staff overtime, directly contributing to significant annual cost savings. This improved efficiency will also minimize critical errors in slot counting and payment reconciliation, leading to greater operational accuracy. Furthermore, alleviating the burden of tedious manual tasks and reducing frustrating errors is expected to enhance staff morale and boost overall productivity. Ultimately, this optimized system creates a more stable and efficient foundation, better positioning ACTS to handle future growth and program expansion.
+Implementing these refinements is projected to deliver significant positive outcomes for [ACTS Achi & Ahia](https://www.acts.com.ph/). By streamlining the enrollment workflow, we anticipate a substantial reduction in staff overtime, directly contributing to significant annual cost savings. This improved efficiency will also minimize critical errors in slot counting and payment reconciliation, leading to greater operational accuracy. Furthermore, alleviating the burden of tedious manual tasks and reducing frustrating errors is expected to enhance staff morale and boost overall productivity. Ultimately, this optimized system creates a more stable and efficient foundation, better positioning ACTS to handle future growth and program expansion.
 
 # Our Client
 
-ACTS Achi & Ahia Inc. is a premier review school specializing in entrance exam preparation (CET & SHAPE Reviews) and after-school tutorials for students aiming for top universities and academic excellence. Founded with a unique, supportive approach, ACTS creates a relaxed, family-centric environment where students are mentored by their "Achi and Ahia" (older sister and brother). They break away from formal classroom settings, using engaging methods like gamified "missions" within their programs.
+[ACTS Achi & Ahia Inc.](https://www.acts.com.ph/) is a premier review school specializing in entrance exam preparation (CET & SHAPE Reviews) and after-school tutorials for students aiming for top universities and academic excellence. Founded with a unique, supportive approach, ACTS creates a relaxed, family-centric environment where students are mentored by their "Achi and Ahia" (older sister and brother). They break away from formal classroom settings, using engaging methods like gamified "missions" within their programs.
 
 ## The Enrollment Challenge
 
