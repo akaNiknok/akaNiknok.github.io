@@ -101,6 +101,20 @@
       border-radius: 6px;
     }
 
+    /* Two-column body: experience (main) + sidebar */
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 232px;
+      gap: 0 40px;
+      align-items: start;
+    }
+    aside {
+      border-left: 1px solid var(--line);
+      padding-left: 32px;
+    }
+    /* first section header in each column shouldn't push down */
+    .columns > * > section:first-child h2 { margin-top: 6px; }
+
     /* ---------- Header ---------- */
     header { padding-bottom: 22px; border-bottom: 1px solid var(--line); }
     header h1 {
@@ -189,13 +203,18 @@
       background: var(--accent-bright);
     }
     .job strong { color: var(--text); font-weight: 600; }
+    .job-title a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+    .job-title a:hover { color: var(--accent); }
 
     .skills p { margin: 0 0 9px; color: var(--soft); }
     .skills p:last-child { margin-bottom: 0; }
     .skills strong { color: var(--text); font-weight: 600; }
 
+    .edu-item { margin-bottom: 14px; }
+    .edu-item:last-child { margin-bottom: 0; }
     .edu p { margin: 0 0 4px; }
-    .edu .sub { color: var(--soft); font-size: 13px; margin: 0 0 12px; }
+    .edu .sub { color: var(--soft); font-size: 13px; margin: 0 0 6px; }
+    .edu .sub:last-child { margin-bottom: 0; }
     .edu b { font-weight: 600; }
     .edu .yr { font-family: var(--font-mono); color: var(--faint); font-size: 12px; }
 
@@ -204,6 +223,8 @@
       header h1 { font-size: 28px; }
       .job-head { flex-direction: column; gap: 2px; margin-bottom: 8px; }
       .contact span { margin: 0 6px; }
+      .columns { grid-template-columns: 1fr; gap: 0; }
+      aside { border-left: none; padding-left: 0; margin-top: 8px; }
     }
 
     /* ---------- Print / PDF ---------- */
@@ -221,7 +242,7 @@
       }
       .contact a { color: var(--soft) !important; }
       header { padding-top: 4px; }
-      .job, .edu p { page-break-inside: avoid; }
+      .job, .edu-item { page-break-inside: avoid; break-inside: avoid; }
       h2 { page-break-after: avoid; break-after: avoid; }
     }
   </style>
@@ -250,6 +271,8 @@
       </p>
     </header>
 
+    <div class="columns">
+    <main>
     <section>
       <h2>Professional Experience</h2>
 
@@ -295,7 +318,9 @@
         </ul>
       </div>
     </section>
+    </main>
 
+    <aside>
     <section class="skills">
       <h2>Core Skills</h2>
       <p><strong>Project management:</strong> Agile / Scrum, hybrid iterative delivery, requirements gathering, stakeholder communication, sprint planning, RACI / workflow design, process &amp; documentation systems.</p>
@@ -306,16 +331,23 @@
 
     <section class="edu">
       <h2>Education</h2>
-      <p><b>Ateneo de Manila University</b> <span class="yr">— 2025</span></p>
-      <p class="sub">BS Management Information Systems · Specialization: Data Science &amp; Analytics. (Previously BS Applied Mathematics – Minor in Data Science; coursework in Mathematical Analysis, Fundamentals of Computing, Computer Simulation &amp; Modelling.)</p>
-      <p><b>Claret School of Quezon City</b> <span class="yr">— 2020</span></p>
-      <p class="sub">High School Diploma · Consistent honor student.</p>
+      <div class="edu-item">
+        <p><b>Ateneo de Manila University</b> <span class="yr">— 2025</span></p>
+        <p class="sub">BS Management Information Systems, specializing in Data Science &amp; Analytics.</p>
+        <p class="sub">Shifted from BS Applied Mathematics (Minor in Data Science), with coursework in Mathematical Analysis, Fundamentals of Computing, and Computer Simulation &amp; Modelling.</p>
+      </div>
+      <div class="edu-item">
+        <p><b>Claret School of Quezon City</b> <span class="yr">— 2020</span></p>
+        <p class="sub">High School Diploma · Consistent honor student.</p>
+      </div>
     </section>
 
     <section class="skills">
       <h2>Languages</h2>
       <p>English · Filipino</p>
     </section>
+    </aside>
+    </div>
   </article>
 </body>
 </html>
