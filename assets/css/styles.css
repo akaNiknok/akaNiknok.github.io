@@ -256,6 +256,16 @@ h3 {
 
 .accent-word { color: var(--accent); }
 
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  line-height: 1.2;
+  color: var(--text-soft);
+  margin: -0.7rem 0 1.5rem;
+  max-width: 24ch;
+}
+
 /* ---------- Hero ---------- */
 .hero {
   padding-top: clamp(2.75rem, 7vw, 4rem);
@@ -625,6 +635,7 @@ h3 {
     width: 168px;
     justify-self: start;
   }
+  .hero-portrait img { height: auto; border-radius: 50%; }
 
   .nav { padding: 0.85rem var(--pad); }
 
