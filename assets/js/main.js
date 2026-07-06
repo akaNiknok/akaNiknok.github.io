@@ -162,7 +162,7 @@
     modalBody.innerHTML = "";
     p.body.forEach(function (para) {
       var el = doc.createElement("p");
-      el.textContent = para;
+      el.innerHTML = para;
       modalBody.appendChild(el);
     });
     modalTech.innerHTML = "";
