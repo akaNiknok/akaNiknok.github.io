@@ -88,7 +88,7 @@ img { max-width: 100%; display: block; }
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.4s ease;
 }
 a:hover { color: var(--text); }
 
@@ -178,7 +178,7 @@ a:hover { color: var(--text); }
   color: var(--text-soft);
   cursor: pointer;
   position: relative;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
 }
 .theme-toggle:hover { border-color: var(--border-strong); color: var(--text); transform: translateY(-1px); }
 
@@ -191,6 +191,21 @@ a:hover { color: var(--text); }
 [data-theme="dark"]  .theme-icon-moon { opacity: 1; transform: rotate(0) scale(1); }
 
 .nav-toggle { display: none; }
+
+/* Exhaling theme switch — while .theme-easing is on <html> (set briefly by
+   main.js on toggle), every color-ish property crossfades instead of snapping. */
+html.theme-easing,
+html.theme-easing *,
+html.theme-easing *::before,
+html.theme-easing *::after {
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease,
+    border-color 0.6s ease,
+    box-shadow 0.6s ease,
+    opacity 0.6s ease,
+    transform 0.6s var(--ease) !important;
+}
 
 /* ---------- Layout primitives ---------- */
 .hero,
@@ -294,7 +309,7 @@ h3 {
   border-radius: 50%;
   background: var(--accent-bright);
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-bright) 60%, transparent);
-  animation: pulse 2.4s var(--ease) infinite;
+  animation: pulse 4s ease-in-out infinite; /* breath cadence */
 }
 @keyframes pulse {
   0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-bright) 55%, transparent); }
@@ -317,7 +332,7 @@ h3 {
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.25s var(--ease), box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s ease, background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 .btn-primary {
   background: var(--accent-bright);
@@ -340,7 +355,7 @@ h3 {
   border-radius: 0;
 }
 .btn-text:hover { color: var(--accent); }
-.btn-text span { transition: transform 0.25s var(--ease); }
+.btn-text span { transition: transform 0.4s var(--ease); }
 .btn-text:hover span { transform: translateX(4px); }
 
 .hero-portrait { perspective: 1000px; }
@@ -438,7 +453,7 @@ h3 {
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: transform 0.35s var(--ease), border-color 0.3s ease, box-shadow 0.35s ease;
+  transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 .quote:hover {
   transform: translateY(-3px);
@@ -489,7 +504,7 @@ h3 {
   color: var(--accent);
   opacity: 0;
   transform: translateX(-6px);
-  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+  transition: opacity 0.4s ease, transform 0.4s var(--ease);
 }
 .work-row:hover .w-arrow,
 .work-row:focus-visible .w-arrow { opacity: 1; transform: translateX(0); }
@@ -520,7 +535,7 @@ h3 {
   color: var(--text);
   border-bottom: 1px solid var(--border-strong);
   padding-bottom: 3px;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.4s ease, border-color 0.4s ease;
 }
 .contact-links a:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -582,7 +597,7 @@ h3 {
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.4s ease, color 0.4s ease, transform 0.4s ease;
 }
 .modal-close:hover { border-color: var(--border-strong); color: var(--text); transform: rotate(90deg); }
 .modal-eyebrow {
