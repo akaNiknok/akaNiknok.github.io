@@ -21,9 +21,16 @@
     themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
   }
   syncThemeLabel();
+  var themeEaseTimer;
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      if (!reduceMotion) {
+        // Exhale: crossfade all colors for one slow beat, then clean up.
+        root.classList.add("theme-easing");
+        clearTimeout(themeEaseTimer);
+        themeEaseTimer = setTimeout(function () { root.classList.remove("theme-easing"); }, 650);
+      }
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("theme", next); } catch (e) {}
       syncThemeLabel();
