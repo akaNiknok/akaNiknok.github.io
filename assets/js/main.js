@@ -168,6 +168,22 @@
   }
   renderWork();
 
+  /* ---------- Screenshot lightbox ---------- */
+  var lightbox = doc.getElementById("lightbox");
+  var lightboxImg = doc.getElementById("lightbox-img");
+
+  function openLightbox(img) {
+    if (!lightbox) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.showModal();
+  }
+
+  if (lightbox) {
+    // Any click inside dismisses — the image is the only thing here.
+    lightbox.addEventListener("click", function () { lightbox.close(); });
+  }
+
   /* ---------- Project modal ---------- */
   var modal = doc.getElementById("project-modal");
   var modalEyebrow = doc.getElementById("modal-eyebrow");
@@ -195,11 +211,16 @@
     });
     // ponytail: images are built per-open, so nothing loads until a project is opened.
     (p.images || []).forEach(function (img) {
+      var btn = doc.createElement("button");
+      btn.type = "button";
+      btn.className = "modal-shot";
+      btn.title = "Enlarge";
       var el = doc.createElement("img");
-      el.className = "modal-shot";
       el.src = img.src;
       el.alt = img.alt;
-      modalBody.appendChild(el);
+      btn.appendChild(el);
+      btn.addEventListener("click", function () { openLightbox(img); });
+      modalBody.appendChild(btn);
     });
     if (modalReality) {
       modalReality.innerHTML = "";
@@ -244,6 +265,8 @@
     });
     doc.addEventListener("keydown", function (e) {
       if (modal.hidden) return;
+      // The lightbox sits on top and handles its own Esc/Tab.
+      if (lightbox && lightbox.open) return;
       if (e.key === "Escape") { closeModal(); return; }
       if (e.key === "Tab") {
         var f = focusables();
