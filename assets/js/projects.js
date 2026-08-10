@@ -178,10 +178,10 @@ window.PROJECTS = [
     ],
     tech: ["Python", "NumPy", "Pandas", "Matplotlib", "Seaborn", "scikit-learn"],
     images: [
-      { src: "assets/img/projects/clustering_techniques_1.png", alt: "Data pipeline slide: the raw complaint dataset of 62,516 rows by 12 columns reduced to 61,022 rows by 5 columns of product, issue, company response and timeliness." },
-      { src: "assets/img/projects/clustering_techniques_2.png", alt: "Final dataset slide: categorical fields one-hot encoded into 61,022 rows by 86 columns to avoid implying ordinality." },
-      { src: "assets/img/projects/clustering_techniques_3.png", alt: "Dimensionality reduction slide: PCA loadings for the first two components, an elbow plot picking four clusters, and the resulting complaint clusters plotted on PCA axes." },
-      { src: "assets/img/projects/clustering_techniques_4.png", alt: "Analysis slide interpreting the four clusters — credit card concerns, comprehensive engagement, low engagement and account management concerns — beside the cluster scatter plot." }
+      { src: "assets/img/projects/clustering_techniques_1.jpg", alt: "Data pipeline slide: the raw complaint dataset of 62,516 rows by 12 columns reduced to 61,022 rows by 5 columns of product, issue, company response and timeliness." },
+      { src: "assets/img/projects/clustering_techniques_2.jpg", alt: "Final dataset slide: categorical fields one-hot encoded into 61,022 rows by 86 columns to avoid implying ordinality." },
+      { src: "assets/img/projects/clustering_techniques_3.jpg", alt: "Dimensionality reduction slide: PCA loadings for the first two components, an elbow plot picking four clusters, and the resulting complaint clusters plotted on PCA axes." },
+      { src: "assets/img/projects/clustering_techniques_4.jpg", alt: "Analysis slide interpreting the four clusters — credit card concerns, comprehensive engagement, low engagement and account management concerns — beside the cluster scatter plot." }
     ]
   },
   {
