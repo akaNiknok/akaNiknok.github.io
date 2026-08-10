@@ -666,6 +666,15 @@ h3 {
 }
 .modal-title { margin: 0 0 1.1rem; }
 .modal-body p { color: var(--text-soft); margin: 0 0 1rem; text-wrap: pretty; }
+.modal-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.25rem 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
 .modal-tech {
   display: flex;
   flex-wrap: wrap;

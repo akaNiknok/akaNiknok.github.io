@@ -193,6 +193,14 @@
       el.innerHTML = para;
       modalBody.appendChild(el);
     });
+    // ponytail: images are built per-open, so nothing loads until a project is opened.
+    (p.images || []).forEach(function (img) {
+      var el = doc.createElement("img");
+      el.className = "modal-shot";
+      el.src = img.src;
+      el.alt = img.alt;
+      modalBody.appendChild(el);
+    });
     if (modalReality) {
       modalReality.innerHTML = "";
       if (p.reality && p.reality.length) {
