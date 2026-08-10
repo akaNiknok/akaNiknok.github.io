@@ -21,9 +21,16 @@
     themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
   }
   syncThemeLabel();
+  var themeEaseTimer;
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      if (!reduceMotion) {
+        // Exhale: crossfade all colors for one slow beat, then clean up.
+        root.classList.add("theme-easing");
+        clearTimeout(themeEaseTimer);
+        themeEaseTimer = setTimeout(function () { root.classList.remove("theme-easing"); }, 650);
+      }
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("theme", next); } catch (e) {}
       syncThemeLabel();
@@ -82,6 +89,25 @@
   var moreBtn = doc.getElementById("work-more");
   var expanded = false;
 
+  // Build the "what it actually took" annotation block: dense mono fragments
+  // with staggered reveal (delay set via --i; CSS handles the motion).
+  function realityLayer(fragments) {
+    var wrap = doc.createElement("div");
+    wrap.className = "w-reality";
+    wrap.setAttribute("aria-hidden", "true"); // decorative echo of modal content
+    var inner = doc.createElement("div");
+    inner.className = "w-reality-inner";
+    fragments.forEach(function (frag, i) {
+      var span = doc.createElement("span");
+      span.className = "w-frag";
+      span.style.setProperty("--i", i);
+      span.textContent = frag;
+      inner.appendChild(span);
+    });
+    wrap.appendChild(inner);
+    return wrap;
+  }
+
   function projectRow(p, stagger) {
     var li = doc.createElement("li");
     li.className = "reveal";
@@ -101,6 +127,7 @@
     impact.textContent = p.impact;
     left.appendChild(title);
     left.appendChild(impact);
+    if (p.reality && p.reality.length) left.appendChild(realityLayer(p.reality));
 
     var tags = doc.createElement("span");
     tags.className = "w-tags";
@@ -146,6 +173,7 @@
   var modalEyebrow = doc.getElementById("modal-eyebrow");
   var modalTitle = doc.getElementById("modal-title");
   var modalBody = doc.getElementById("modal-body");
+  var modalReality = doc.getElementById("modal-reality");
   var modalTech = doc.getElementById("modal-tech");
   var lastFocused = null;
 
@@ -165,6 +193,24 @@
       el.innerHTML = para;
       modalBody.appendChild(el);
     });
+    if (modalReality) {
+      modalReality.innerHTML = "";
+      if (p.reality && p.reality.length) {
+        var label = doc.createElement("p");
+        label.className = "modal-reality-label";
+        label.textContent = "What it actually took";
+        modalReality.appendChild(label);
+        p.reality.forEach(function (frag) {
+          var el = doc.createElement("span");
+          el.className = "w-frag";
+          el.textContent = frag;
+          modalReality.appendChild(el);
+        });
+        modalReality.hidden = false;
+      } else {
+        modalReality.hidden = true;
+      }
+    }
     modalTech.innerHTML = "";
     (p.tech || []).forEach(function (t) {
       var el = doc.createElement("span");

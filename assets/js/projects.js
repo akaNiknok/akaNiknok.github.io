@@ -1,11 +1,19 @@
 // Project data for the Selected Work section.
 // Sourced/adapted from texts.md and capstone.md. Keep this in sync with those.
 // `featured: true` rows show in the editorial list before "see all" is expanded.
+// `reality` = the "what it actually took" layer: short fragments compressed from
+// the body copy below, revealed on hover/focus and in the modal.
 window.PROJECTS = [
   {
     id: "acts",
     title: "ACTS enrollment refinement",
     impact: "Cut staff overtime ~80% and saved ₱625,540 a year",
+    reality: [
+      "1,144 → 208 overtime hrs/year",
+      "Two-week sprints, stakeholder review each close",
+      "System testing + user-acceptance testing",
+      "Cognito + Sheets + Apps Script, no new software"
+    ],
     tags: ["Project management", "Apps Script"],
     year: "2024–2025",
     role: "Assistant Project Manager & System Developer",
@@ -21,6 +29,12 @@ window.PROJECTS = [
     id: "bluemap",
     title: "BlueMap carbon restoration database",
     impact: "Geospatial restoration map: QGIS → Firebase → Mapbox",
+    reality: [
+      "QGIS → Firebase → Mapbox pipeline",
+      "Cost vs. scale trade-off on the stack",
+      "Unfamiliar frontend frameworks",
+      "Co-led deployment + integration"
+    ],
     tags: ["Backend", "GIS"],
     year: "2023–2024",
     role: "Database & Web Development Consultant / Lead Backend Developer",
@@ -36,6 +50,11 @@ window.PROJECTS = [
     id: "wine",
     title: "Wine quality prediction",
     impact: "Compared four ML classifiers on physicochemical data",
+    reality: [
+      "Decision Tree · SVM · kNN · Naive Bayes",
+      "Prep → train → evaluate → compare",
+      "Physicochemical attributes only"
+    ],
     tags: ["Data science"],
     year: "",
     role: "Developer",
@@ -50,6 +69,11 @@ window.PROJECTS = [
     id: "pm-app",
     title: "Project Manager App",
     impact: "Web app to streamline PM task organization",
+    reality: [
+      "Django + SQL, HTML/Bootstrap front",
+      "Built ground-up as lead developer",
+      "Data-flow + entity-relationship diagrams"
+    ],
     tags: ["Full-stack"],
     year: "",
     role: "Lead Developer",
@@ -64,6 +88,11 @@ window.PROJECTS = [
     id: "lazapee",
     title: "Lazapee payroll app",
     impact: "Payroll web app praised for clean, readable code",
+    reality: [
+      "Django + SQL, built from scratch",
+      "Team focus on code quality + docs",
+      "Praised for clean, readable code"
+    ],
     tags: ["Full-stack"],
     year: "",
     role: "Lead Developer",
@@ -77,6 +106,11 @@ window.PROJECTS = [
     id: "reactbook",
     title: "ReactBook",
     impact: "A social-media app built to learn React.js",
+    reality: [
+      "Auth · posting · friend management",
+      "Learned React.js on the fly",
+      "Simple by design"
+    ],
     tags: ["Front-end"],
     year: "",
     role: "Developer",
@@ -90,6 +124,11 @@ window.PROJECTS = [
     id: "raman",
     title: "Mobile Raman spectrometer app",
     impact: "Image-to-histogram tool for award-winning research",
+    reality: [
+      "Image → histogram in Kivy",
+      "Pixel color extraction for stats",
+      "Fed an award-winning research paper"
+    ],
     tags: ["Software"],
     year: "",
     role: "Developer",
@@ -103,6 +142,11 @@ window.PROJECTS = [
     id: "complaints",
     title: "Financial consumer-complaint clustering",
     impact: "Clustering model to segment and triage complaints",
+    reality: [
+      "Bank of America complaint dataset",
+      "Clean → transform → cluster pipeline",
+      "Segment + triage complaints"
+    ],
     tags: ["Data science"],
     year: "",
     role: "Developer",
@@ -116,6 +160,11 @@ window.PROJECTS = [
     id: "3d-anim",
     title: "3D animation in Python",
     impact: "Perspective-projection animation for linear algebra",
+    reality: [
+      "Perspective-projection math",
+      "3D objects animated in NumPy/Matplotlib",
+      "For a Linear Algebra course"
+    ],
     tags: ["Software"],
     year: "",
     role: "Developer",
