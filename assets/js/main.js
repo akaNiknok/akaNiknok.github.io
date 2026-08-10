@@ -247,3 +247,5 @@
     });
   }
 })();
+
+console.log("%c// been writing these since I was 12. still here.", "color:#22d3ee");
