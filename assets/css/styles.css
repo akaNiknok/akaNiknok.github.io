@@ -669,12 +669,38 @@ h3 {
 .modal-shot {
   display: block;
   width: 100%;
-  height: auto;
   margin: 1.25rem 0;
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-color 0.4s ease;
 }
+.modal-shot:hover,
+.modal-shot:focus-visible { border-color: var(--border-strong); }
+.modal-shot img { display: block; width: 100%; height: auto; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  max-width: 94vw;
+  max-height: 94vh;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  cursor: zoom-out;
+  overflow: hidden;
+}
+.lightbox::backdrop {
+  background: rgba(8, 10, 13, 0.78);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.lightbox img { display: block; max-width: 94vw; max-height: 94vh; width: auto; height: auto; }
+.lightbox[open] { animation: pop 0.3s var(--ease) both; }
+@media (prefers-reduced-motion: reduce) { .lightbox[open] { animation: none; } }
 .modal-tech {
   display: flex;
   flex-wrap: wrap;
