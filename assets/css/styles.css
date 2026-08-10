@@ -42,7 +42,7 @@
   --border-strong: rgba(233, 235, 239, 0.26);
 }
 
-* { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -392,7 +392,10 @@ h3 {
   content: "";
   position: absolute;
   left: -6px;
-  top: 7px;
+  /* match the h3 so `lh` is its line box: dot centers on the title's first line */
+  font-size: 1.14rem;
+  top: 10px;
+  top: calc(0.5lh - 5px);
   width: 10px;
   height: 10px;
   border-radius: 50%;
