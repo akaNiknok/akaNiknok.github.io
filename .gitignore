@@ -6,3 +6,7 @@ src/portfolio_projects.html
 
 # Confidential HR / review documents
 src/*.pdf
+
+# Local source notes (kept locally, not published)
+src/capstone.md
+src/texts.md
