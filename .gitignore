@@ -3,3 +3,6 @@ src/Austin_Performance_Report_*.md
 
 # Local scratch / source notes (not part of the published site)
 src/portfolio_projects.html
+
+# Confidential HR / review documents
+src/*.pdf

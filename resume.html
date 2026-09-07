@@ -41,8 +41,8 @@
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       color: var(--text);
-      line-height: 1.55;
-      font-size: 14px;
+      line-height: 1.45;
+      font-size: 12.5px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -101,7 +101,7 @@
       max-width: 840px;
       margin: 0 auto 3rem;
       background: #fff;
-      padding: 56px 64px 60px;
+      padding: 48px 58px 52px;
       border-top: 3px solid var(--accent-bright);
       box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 18px 50px rgba(0,0,0,0.08);
       border-radius: 6px;
@@ -110,21 +110,21 @@
     /* Two-column body: experience (main) + sidebar */
     .columns {
       display: grid;
-      grid-template-columns: 1fr 232px;
-      gap: 0 40px;
+      grid-template-columns: 1fr 180px;
+      gap: 0 24px;
       align-items: start;
     }
     aside {
       border-left: 1px solid var(--line);
-      padding-left: 32px;
+      padding-left: 20px;
     }
     /* first section header in each column shouldn't push down */
     .columns > * > section:first-child h2 { margin-top: 6px; }
 
     /* ---------- Header ---------- */
-    header { padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    header { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
     header h1 {
-      font-size: 34px;
+      font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.025em;
       line-height: 1.05;
@@ -135,19 +135,19 @@
       font-weight: 600;
       font-size: 15px;
       letter-spacing: 0.01em;
-      margin: 6px 0 14px;
+      margin: 4px 0 10px;
     }
-    .contact { color: var(--soft); font-size: 13px; line-height: 1.7; margin: 0; }
-    .contact a { color: var(--soft); text-decoration: none; transition: color 0.2s ease; }
+    .contact { color: var(--faint); font-size: 12px; line-height: 1.7; margin: 0; }
+    .contact a { color: var(--faint); text-decoration: none; transition: color 0.2s ease; }
     .contact a:hover { color: var(--accent); }
-    .contact span { color: var(--faint); margin: 0 9px; }
+    .contact span { color: #b6bac1; margin: 0 8px; }
 
     .summary {
-      color: var(--soft);
-      font-size: 14.5px;
-      line-height: 1.65;
-      margin: 18px 0 0;
-      max-width: 68ch;
+      color: #32363e;
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin: 9px 0 0;
+      max-width: 88ch;
       text-wrap: pretty;
     }
 
@@ -163,8 +163,8 @@
       text-transform: uppercase;
       color: var(--faint);
       border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
-      margin: 32px 0 16px;
+      padding-bottom: 6px;
+      margin: 16px 0 11px;
     }
     h2::before {
       content: "";
@@ -175,15 +175,15 @@
     }
 
     /* ---------- Experience ---------- */
-    .job { margin-bottom: 20px; }
+    .job { margin-bottom: 12px; }
     .job-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1rem;
-      margin-bottom: 7px;
+      margin-bottom: 5px;
     }
-    .job-title { font-weight: 600; font-size: 15.5px; letter-spacing: -0.01em; margin: 0; }
+    .job-title { font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em; margin: 0; }
     .job-meta {
       font-family: var(--font-mono);
       color: var(--faint);
@@ -195,7 +195,7 @@
     .job li {
       position: relative;
       padding-left: 18px;
-      margin-bottom: 6px;
+      margin-bottom: 3px;
       color: var(--soft);
     }
     .job li::before {
@@ -212,11 +212,11 @@
     .job-title a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
     .job-title a:hover { color: var(--accent-bright); }
 
-    .skills p { margin: 0 0 9px; color: var(--soft); }
+    .skills p { margin: 0 0 8px; color: var(--soft); }
     .skills p:last-child { margin-bottom: 0; }
     .skills strong { color: var(--text); font-weight: 600; }
 
-    .edu-item { margin-bottom: 14px; }
+    .edu-item { margin-bottom: 12px; }
     .edu-item:last-child { margin-bottom: 0; }
     .edu p { margin: 0 0 4px; }
     .edu .sub { color: var(--soft); font-size: 13px; margin: 0 0 6px; }
@@ -224,7 +224,7 @@
     .edu b { font-weight: 600; }
     .edu .yr { font-family: var(--font-mono); color: var(--faint); font-size: 12px; }
 
-    @media (max-width: 700px) {
+    @media screen and (max-width: 700px) {
       .sheet { padding: 36px 24px 40px; }
       header h1 { font-size: 28px; }
       .job-head { flex-direction: column; gap: 2px; margin-bottom: 8px; }
@@ -246,7 +246,7 @@
         border-radius: 0;
         border-top: none;
       }
-      .contact a { color: var(--soft) !important; }
+      .contact a { color: var(--faint) !important; }
       header { padding-top: 4px; }
       .job, .edu-item { page-break-inside: avoid; break-inside: avoid; }
       h2 { page-break-after: avoid; break-after: avoid; }
@@ -262,16 +262,16 @@
   <article class="sheet">
     <header>
       <h1>Austin G. Imperial</h1>
-      <p class="role">AI / IT Project Manager</p>
+      <p class="role">AI Project Manager</p>
       <p class="contact">
         <a href="mailto:austingimperial@gmail.com">austingimperial@gmail.com</a><span>·</span>Quezon City, Metro Manila, PH
         <br>
-        <a href="https://ph.linkedin.com/in/austin-imperial">linkedin.com/in/austin-imperial</a><span>·</span><a href="https://github.com/akaNiknok">github.com/akaNiknok</a>
+        <a href="https://ph.linkedin.com/in/austin-imperial">linkedin.com/in/austin-imperial</a><span>·</span><a href="https://akaniknok.github.io">akaNiknok.github.io</a>
       </p>
       <p class="summary">
         Project manager who also builds, with a strong foundation in data science, full-stack
-        development, and system optimization. I bring people, process, and technology into the
-        same rhythm — turning messy delivery into calm, well-run systems. Experienced in Agile
+        development, and system optimization. I aim to bring people, process, and technology into
+        the same rhythm — turning messy delivery into calm, well-run systems. Experienced in Agile
         delivery, stakeholder coordination, API integration, and shipping scalable,
         cost-effective solutions.
       </p>
@@ -288,12 +288,13 @@
           <span class="job-meta">Nov 2025 – Present</span>
         </div>
         <ul>
+          <li><strong>Promoted one level (junior &rarr; mid) in less than 6 months</strong>, rated &ldquo;Exceeds Expectations &mdash; delivering one level above scope.&rdquo;</li>
+          <li>Owned an AI delivery project end to end as sole <strong>Lead PM</strong> &mdash; scaffolded from a cold start through scoping, execution, and closeout &mdash; while growing from supporting 2 projects to owning or supporting 7.</li>
           <li>Coordinate delivery across project managers, QA, research experts, the support team, engineers, and accounting for <strong>a frontier-AI data company</strong>.</li>
-          <li>Grew from supporting 2 projects to owning/supporting 7 in the first months — from Support PM to <strong>Lead PM</strong> on one project, plus an operational seat on the team's most complex cross-functional project.</li>
-          <li>Redesigned a project progress tracker adopted across experts, QA, and fellow PMs.</li>
-          <li>Designed the project's operating model — a <strong>RACI-based workflow</strong> that mapped ownership and delegation across the team — and led documentation migrations ahead of a platform transition.</li>
-          <li>Built a custom tool that connects to the client's API to monitor and surface data errors and quality issues faster.</li>
-          <li>Leveled from junior (IC1) toward mid (IC2) within roughly the first 6 months, with consistent peer and lead recognition.</li>
+          <li>Rebuilt a central project progress tracker in my first weeks &mdash; cited in review as &ldquo;significantly improved and streamlined,&rdquo; and adopted across experts, QA, and fellow PMs; took over a live project on hours&rsquo; notice during an emergency handover and cleared open issues within the shift.</li>
+          <li>Contributed a cross-functional <strong>Claude Code workflow</strong> now replicated by engineers, delivery leads, TPMs, and PMs beyond my own projects.</li>
+          <li>Trusted as the team&rsquo;s <strong>point-of-contact</strong> for the client&rsquo;s RL-environment tooling platform; designed the project&rsquo;s operating model &mdash; a <strong>RACI-based workflow</strong> mapping ownership and delegation &mdash; and led documentation migrations ahead of a platform transition.</li>
+          <li>Built a custom tool on the client&rsquo;s API to surface data errors and quality issues faster.</li>
         </ul>
       </div>
 
@@ -303,12 +304,9 @@
           <span class="job-meta">2024 – 2025</span>
         </div>
         <ul>
-          <li>Led 6+ bi-weekly sprints using a hybrid-iterative framework, ensuring stakeholder alignment and adaptability.</li>
-          <li>Managed the risk register and budget tracking in Excel; used Trello for task management and sprint planning.</li>
-          <li>Automated consolidation of operational data with Excel Macros and PivotTables, producing department-specific reports.</li>
-          <li>Demonstrated an <strong>80% reduction in IT and Customer Success overtime</strong> (1,144 → 208 hours annually), proving ROI.</li>
-          <li>Integrated Google Sheets with the enrollment system for real-time, cross-department data synchronization.</li>
-          <li>Contributed to <strong>₱625,540 in annual savings</strong> by streamlining workflows and centralizing data management.</li>
+          <li>Led 6+ bi-weekly sprints on a hybrid-iterative framework, owning the risk register, budget tracking, and sprint planning (Excel, Trello).</li>
+          <li>Automated consolidation of operational data with Excel Macros and PivotTables, and integrated Google Sheets with the enrollment system for real-time cross-department sync.</li>
+          <li>Cut IT and Customer Success overtime <strong>80%</strong> (1,144 → 208 hours annually), contributing <strong>₱625,540 in annual savings</strong>.</li>
         </ul>
       </div>
 
@@ -318,9 +316,7 @@
           <span class="job-meta">2023 – 2024</span>
         </div>
         <ul>
-          <li>Led backend development for a geospatial web tool, designing server-side architecture with two other developers.</li>
-          <li>Managed data flow from QGIS to Firebase and Mapbox for accurate visualization of restoration sites.</li>
-          <li>Oversaw deployment to Firebase and optimized database design for faster map interactions.</li>
+          <li>Led backend development for a public geospatial web tool with two other developers &mdash; data flow from QGIS through Firebase to Mapbox, plus deployment and database optimization.</li>
         </ul>
       </div>
     </section>
@@ -329,10 +325,11 @@
     <aside>
     <section class="skills">
       <h2>Core Skills</h2>
-      <p><strong>Project management:</strong> Agile / Scrum, hybrid iterative delivery, requirements gathering, stakeholder communication, sprint planning, RACI / workflow design, process &amp; documentation systems.</p>
-      <p><strong>Programming &amp; development:</strong> Python, JavaScript, PHP, SQL, HTML, CSS, C/C++, Ruby; system &amp; API integration.</p>
-      <p><strong>Data science &amp; analytics:</strong> data cleaning &amp; wrangling, visualization, reporting, geospatial analysis, machine learning.</p>
+      <p><strong>Project management:</strong> Agile / Scrum, sprint planning, stakeholder communication, RACI &amp; workflow design, process documentation.</p>
+      <p><strong>Programming &amp; development:</strong> Python, SQL, JavaScript; system &amp; API integration, internal tooling.</p>
+      <p><strong>Data science &amp; analytics:</strong> data cleaning, visualization, reporting, geospatial analysis, machine learning.</p>
       <p><strong>Tools &amp; platforms:</strong> Git/GitHub, Firebase, Google Sheets &amp; Apps Script, Excel &amp; Macros, Trello, Asana, Claude Code.</p>
+      <p><strong>Languages:</strong> English · Filipino</p>
     </section>
 
     <section class="edu">
@@ -340,17 +337,8 @@
       <div class="edu-item">
         <p><b>Ateneo de Manila University</b> <span class="yr">— 2025</span></p>
         <p class="sub">BS Management Information Systems, specializing in Data Science &amp; Analytics.</p>
-        <p class="sub">Shifted from BS Applied Mathematics (Minor in Data Science), with coursework in Mathematical Analysis, Fundamentals of Computing, and Computer Simulation &amp; Modelling.</p>
+        <p class="sub">Shifted from BS Applied Mathematics (Minor in Data Science).</p>
       </div>
-      <div class="edu-item">
-        <p><b>Claret School of Quezon City</b> <span class="yr">— 2020</span></p>
-        <p class="sub">High School Diploma · Consistent honor student.</p>
-      </div>
-    </section>
-
-    <section class="skills">
-      <h2>Languages</h2>
-      <p>English · Filipino</p>
     </section>
     </aside>
     </div>
