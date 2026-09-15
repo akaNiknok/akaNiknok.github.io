@@ -1,0 +1,217 @@
+<!--
+  ============================================================
+  Unlisted cover-letter composer. Nothing links here on purpose:
+  reach it by typing the URL. Type markdown on the left, print
+  the rendered sheet on the right. The draft autosaves to this
+  browser's localStorage only, so it never leaves the machine
+  and is never committed.
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Cover Letter</title>
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #0e7490;
+      --accent-bright: #06b6d4;
+      --text: #16181d;
+      --soft: #474c56;
+      --faint: #6f747e;
+      --line: #e6e8ec;
+      --paper: #f1f1ef;
+      --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--paper); }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      line-height: 1.45;
+      font-size: 12.5px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Floating toolbar (screen only) */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      background: color-mix(in srgb, var(--paper) 85%, transparent);
+      backdrop-filter: saturate(150%) blur(10px);
+      -webkit-backdrop-filter: saturate(150%) blur(10px);
+      z-index: 10;
+    }
+    .toolbar .meta { color: var(--faint); font-size: 12px; }
+    .toolbar .meta b { color: var(--soft); font-weight: 600; }
+    .download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-bright);
+      color: #042a33;
+      border: none;
+      font: inherit;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+    .download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px color-mix(in srgb, var(--accent-bright) 40%, transparent);
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 840px);
+      gap: 24px;
+      max-width: 1420px;
+      margin: 0 auto 3rem;
+      padding: 0 18px;
+      align-items: start;
+    }
+
+    .editor textarea {
+      width: 100%;
+      height: calc(100vh - 150px);
+      min-height: 420px;
+      resize: vertical;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--soft);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.6;
+      tab-size: 2;
+    }
+    .editor textarea:focus { outline: 2px solid var(--accent-bright); outline-offset: -2px; }
+
+    /* The page sheet */
+    .sheet {
+      background: #fff;
+      padding: 48px 58px 52px;
+      border-top: 3px solid var(--accent-bright);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 18px 50px rgba(0,0,0,0.08);
+      border-radius: 6px;
+      min-height: 400px;
+    }
+    .sheet h1 { font-size: 20px; margin: 0 0 4px; letter-spacing: -0.01em; }
+    .sheet h2 { font-size: 13px; margin: 20px 0 6px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+    .sheet h3 { font-size: 13px; margin: 16px 0 4px; }
+    .sheet p { margin: 0 0 11px; }
+    .sheet ul, .sheet ol { margin: 0 0 11px; padding-left: 18px; }
+    .sheet li { margin-bottom: 4px; }
+    .sheet a { color: var(--accent); }
+    .sheet hr { border: none; border-top: 1px solid var(--line); margin: 18px 0; }
+    .sheet blockquote { margin: 0 0 11px; padding-left: 14px; border-left: 2px solid var(--line); color: var(--soft); }
+    .sheet code { font-family: var(--font-mono); font-size: 0.92em; }
+    .sheet > :first-child { margin-top: 0; }
+
+    @media screen and (max-width: 1000px) {
+      .workspace { grid-template-columns: minmax(0, 1fr); }
+      .editor textarea { height: 300px; min-height: 0; }
+      .sheet { padding: 36px 24px 40px; }
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .toolbar, .editor { display: none; }
+      .workspace { display: block; max-width: none; margin: 0; padding: 0; gap: 0; }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        min-height: 0;
+      }
+      .sheet p, .sheet li { orphans: 2; widows: 2; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span class="meta">Markdown on the left, PDF on the right. Draft saves to <b>this browser only</b>.</span>
+    <button class="download" type="button" onclick="window.print()">&#11015; Download PDF</button>
+  </div>
+
+  <div class="workspace">
+    <div class="editor">
+      <label for="md" hidden>Cover letter markdown</label>
+      <textarea id="md" spellcheck="true" aria-label="Cover letter markdown"></textarea>
+    </div>
+    <article class="sheet" id="out"></article>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script>
+    (function () {
+      var KEY = 'cover-letter-draft';
+      var ta = document.getElementById('md');
+      var out = document.getElementById('out');
+
+      var starter = [
+        '# Austin G. Imperial',
+        '',
+        'austingimperial@gmail.com · Quezon City, Metro Manila, PH',
+        '',
+        'linkedin.com/in/austin-imperial · akaNiknok.github.io',
+        '',
+        '---',
+        '',
+        'Dear Hiring Team,',
+        '',
+        'Opening: the role, and what you already do that matches it.',
+        '',
+        'Middle: one concrete thing you built or measured, with the number.',
+        '',
+        'Close: what you are looking for, and your location if it matters.',
+        '',
+        'Thank you for your time.',
+        '',
+        'Austin G. Imperial'
+      ].join('\n');
+
+      function load() {
+        try { return localStorage.getItem(KEY); } catch (e) { return null; }
+      }
+      function save(value) {
+        try { localStorage.setItem(KEY, value); } catch (e) { /* private window: draft just is not kept */ }
+      }
+      function render() {
+        out.innerHTML = marked.parse(ta.value);
+        var heading = ta.value.match(/^#\s+(.+)$/m);
+        document.title = heading ? heading[1] : 'Cover Letter';
+      }
+
+      ta.value = load() || starter;
+      render();
+      ta.addEventListener('input', function () { save(ta.value); render(); });
+    })();
+  </script>
+</body>
+</html>

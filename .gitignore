@@ -1,12 +1,4 @@
-# Confidential — must never be published to this public GitHub Pages repo
-src/Austin_Performance_Report_*.md
-
-# Local scratch / source notes (not part of the published site)
-src/portfolio_projects.html
-
-# Confidential HR / review documents
-src/*.pdf
-
-# Local source notes (kept locally, not published)
-src/capstone.md
-src/texts.md
+# src/ is local-only source notes — confidential Pareto material lives here
+# (performance reports, Slack-derived metrics, HR docs). Nothing in src/ is
+# part of the published site. Ignore the whole directory, not per-file patterns.
+src/
