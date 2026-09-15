@@ -112,28 +112,30 @@
     /* The page sheet */
     .sheet {
       background: #fff;
-      padding: 48px 58px 52px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      padding: 56px 66px 60px;
       border-top: 3px solid var(--accent-bright);
       box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 18px 50px rgba(0,0,0,0.08);
       border-radius: 6px;
       min-height: 400px;
     }
-    .sheet h1 { font-size: 20px; margin: 0 0 4px; letter-spacing: -0.01em; }
-    .sheet h2 { font-size: 13px; margin: 20px 0 6px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
-    .sheet h3 { font-size: 13px; margin: 16px 0 4px; }
-    .sheet p { margin: 0 0 11px; }
-    .sheet ul, .sheet ol { margin: 0 0 11px; padding-left: 18px; }
-    .sheet li { margin-bottom: 4px; }
+    .sheet h1 { font-size: 25px; margin: 0 0 6px; letter-spacing: -0.015em; }
+    .sheet h2 { font-size: 14px; margin: 24px 0 8px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+    .sheet h3 { font-size: 15px; margin: 20px 0 6px; }
+    .sheet p { margin: 0 0 14px; }
+    .sheet ul, .sheet ol { margin: 0 0 14px; padding-left: 20px; }
+    .sheet li { margin-bottom: 6px; }
     .sheet a { color: var(--accent); }
-    .sheet hr { border: none; border-top: 1px solid var(--line); margin: 18px 0; }
-    .sheet blockquote { margin: 0 0 11px; padding-left: 14px; border-left: 2px solid var(--line); color: var(--soft); }
+    .sheet hr { border: none; border-top: 1px solid var(--line); margin: 22px 0; }
+    .sheet blockquote { margin: 0 0 14px; padding-left: 16px; border-left: 2px solid var(--line); color: var(--soft); }
     .sheet code { font-family: var(--font-mono); font-size: 0.92em; }
     .sheet > :first-child { margin-top: 0; }
 
     @media screen and (max-width: 1000px) {
       .workspace { grid-template-columns: minmax(0, 1fr); }
       .editor textarea { height: 300px; min-height: 0; }
-      .sheet { padding: 36px 24px 40px; }
+      .sheet { padding: 40px 26px 44px; font-size: 14px; }
     }
 
     @media print {
