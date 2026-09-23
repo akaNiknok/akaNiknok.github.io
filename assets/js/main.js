@@ -69,24 +69,51 @@
   // --p goes 0 (mess) to 1 (ordered); CSS does the rest. Defaults to 1 without JS.
   var settle = doc.getElementById("settle");
   if (settle && !reduceMotion) {
+    var settleQueued = false;
     var settleTick = function () {
+      settleQueued = false;
       var r = settle.getBoundingClientRect();
       var vh = window.innerHeight;
       var p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.55)));
+      p = p * p * (3 - 2 * p); // smoothstep
       settle.style.setProperty("--p", p.toFixed(3));
     };
+    var queueSettle = function () {
+      if (!settleQueued) { settleQueued = true; requestAnimationFrame(settleTick); }
+    };
     settleTick();
-    window.addEventListener("scroll", settleTick, { passive: true });
-    window.addEventListener("resize", settleTick);
+    window.addEventListener("scroll", queueSettle, { passive: true });
+    window.addEventListener("resize", queueSettle);
   }
+
+  /* ---------- Segmented controls: sliding thumb ---------- */
+  // CSS draws the thumb from these vars; hidden when nothing is pressed.
+  var segGroups = doc.querySelectorAll(".depth-toggle, .calib-presets");
+  function syncThumb(group) {
+    var on = group.querySelector('[aria-pressed="true"]');
+    group.style.setProperty("--to", on ? "1" : "0");
+    if (!on) return;
+    group.style.setProperty("--tx", on.offsetLeft + "px");
+    group.style.setProperty("--ty", on.offsetTop + "px");
+    group.style.setProperty("--tw", on.offsetWidth + "px");
+    group.style.setProperty("--th", on.offsetHeight + "px");
+  }
+  function syncThumbs() { segGroups.forEach(syncThumb); }
+  syncThumbs();
+  window.addEventListener("resize", syncThumbs);
+  if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(syncThumbs);
 
   /* ---------- Experience: 30-second / 5-minute toggle ---------- */
   var timeline = doc.getElementById("timeline");
   var depthBtns = doc.querySelectorAll(".depth-toggle button");
   depthBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      timeline.dataset.depth = btn.dataset.depth;
+      if (timeline.dataset.depth === btn.dataset.depth) return;
       depthBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+      syncThumb(btn.parentNode);
+      var swap = function () { timeline.dataset.depth = btn.dataset.depth; };
+      if (doc.startViewTransition && !reduceMotion) doc.startViewTransition(swap);
+      else swap();
     });
   });
 
@@ -303,6 +330,7 @@
     var setWeight = function (i, v) {
       ref[i] = Math.max(0, Math.min(MAXW, Math.round(v)));
       presetBtns.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      syncThumb(presetBtns[0].parentNode);
       renderCalib();
     };
 
@@ -331,6 +359,7 @@
       btn.addEventListener("click", function () {
         ref = PRESETS[btn.dataset.preset].slice();
         presetBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+        syncThumb(btn.parentNode);
         renderCalib();
       });
     });
@@ -499,10 +528,14 @@
   }
 
   function closeModal() {
-    if (!modal || modal.hidden) return;
-    modal.hidden = true;
-    doc.body.style.overflow = "";
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
+    if (!modal || modal.hidden || modal.classList.contains("closing")) return;
+    modal.classList.add("closing");
+    setTimeout(function () {
+      modal.classList.remove("closing");
+      modal.hidden = true;
+      doc.body.style.overflow = "";
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }, reduceMotion ? 0 : 200);
   }
 
   if (modal) {
