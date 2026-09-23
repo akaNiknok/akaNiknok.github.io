@@ -20,7 +20,7 @@ window.PROJECTS = [
     featured: true,
     body: [
       "Recognized as one of the best capstone projects by our defense panel, this ground-up IT solution was built for <a href='https://www.acts.com.ph/' target='_blank' rel='noopener'>ACTS Achi &amp; Ahia, Inc.</a>, a review center struggling with inefficient enrollment workflows.",
-      "As the system developer and assistant to the project manager, I helped lead both the technical implementation and the project coordination. We identified process bottlenecks and optimized the enrollment system using Cognito Forms, Google Sheets, and Google Apps Script — a semi-automated, integrated solution that improved data accuracy and removed repetitive manual work.",
+      "As the system developer and assistant to the project manager, I helped lead both the technical implementation and the project coordination. We identified process bottlenecks and optimized the enrollment system using Cognito Forms, Google Sheets, and Google Apps Script, building a semi-automated, integrated solution that improved data accuracy and removed repetitive manual work.",
       "We ran the project as a hybrid-iterative effort: focused two-week sprints with continuous stakeholder feedback, system testing, and user acceptance testing, closing each iteration with a stakeholder review. The result was a substantial reduction in staff overtime (1,144 → 208 hours/year, ~80%) and roughly ₱625,540 in annual savings."
     ],
     tech: ["Cognito Forms", "Google Sheets", "Google Apps Script", "Excel Macros", "Trello"],
@@ -43,7 +43,7 @@ window.PROJECTS = [
     role: "Database & Web Development Consultant / Lead Backend Developer",
     featured: true,
     body: [
-      "A practicum project under the Ateneo Arete Sandbox program, focused on building a public geospatial tool for visualizing blue carbon ecosystems — particularly mangrove restoration sites — for climate-change mitigation.",
+      "A practicum project under the Ateneo Arete Sandbox program, focused on building a public geospatial tool for visualizing blue carbon ecosystems (particularly mangrove restoration sites) for climate-change mitigation.",
       "I led backend development, managing the flow of data from QGIS into the database and onto an interactive Mapbox map embedded on the site. Our small team analyzed requirements, technical constraints, and stakeholder needs to land on a cost-effective, scalable stack (choosing Firebase for hosting).",
       "I also co-led deployment, working through integration issues with unfamiliar frontend frameworks and Firebase hosting to ship a functional live product. The work deepened my grasp of geospatial data systems and real-world resource and stakeholder management."
     ],
@@ -66,7 +66,7 @@ window.PROJECTS = [
     role: "Developer",
     featured: true,
     body: [
-      "A classification model that evaluates red-wine quality from physicochemical test attributes. I implemented and compared four supervised algorithms — Decision Tree, Support Vector Machines, Nearest Neighbors, and Naive Bayes — to classify quality accurately.",
+      "A classification model that evaluates red-wine quality from physicochemical test attributes. I implemented and compared four supervised algorithms (Decision Tree, Support Vector Machines, Nearest Neighbors, and Naive Bayes) to classify quality accurately.",
       "The project exercised the full data-analysis and model-building loop: preparation, training, evaluation, and comparison across models."
     ],
     tech: ["Python", "NumPy", "Pandas", "Matplotlib", "Seaborn", "scikit-learn"],
@@ -89,7 +89,7 @@ window.PROJECTS = [
     featured: false,
     body: [
       "Led development of a web application for a company in our Business Applications Development course, designed to streamline project management and task organization for project managers.",
-      "Built from the ground up with Python and Django on the backend and HTML/Bootstrap on the frontend, with SQL handling the database. As lead developer I ensured clean integration between backend and frontend and produced essential documentation — data-flow and entity-relationship diagrams — across the software development lifecycle."
+      "Built from the ground up with Python and Django on the backend and HTML/Bootstrap on the frontend, with SQL handling the database. As lead developer I ensured clean integration between backend and frontend and produced essential documentation (data-flow and entity-relationship diagrams) across the software development lifecycle."
     ],
     tech: ["Python", "Django", "HTML", "CSS", "JavaScript", "Bootstrap", "SQL"],
     images: [
@@ -174,14 +174,14 @@ window.PROJECTS = [
     role: "Developer",
     featured: false,
     body: [
-      "For a Business Intelligence course, we built a clustering model to segment and classify consumer complaints using a Bank of America dataset. The project involved planning and implementing a full data pipeline — cleaning, transformation, and analysis — to improve complaint management through a streamlined, data-driven approach."
+      "For a Business Intelligence course, we built a clustering model to segment and classify consumer complaints using a Bank of America dataset. The project involved planning and implementing a full data pipeline (cleaning, transformation, and analysis) to improve complaint management through a streamlined, data-driven approach."
     ],
     tech: ["Python", "NumPy", "Pandas", "Matplotlib", "Seaborn", "scikit-learn"],
     images: [
       { src: "assets/img/projects/clustering_techniques_1.jpg", alt: "Data pipeline slide: the raw complaint dataset of 62,516 rows by 12 columns reduced to 61,022 rows by 5 columns of product, issue, company response and timeliness." },
       { src: "assets/img/projects/clustering_techniques_2.jpg", alt: "Final dataset slide: categorical fields one-hot encoded into 61,022 rows by 86 columns to avoid implying ordinality." },
       { src: "assets/img/projects/clustering_techniques_3.jpg", alt: "Dimensionality reduction slide: PCA loadings for the first two components, an elbow plot picking four clusters, and the resulting complaint clusters plotted on PCA axes." },
-      { src: "assets/img/projects/clustering_techniques_4.jpg", alt: "Analysis slide interpreting the four clusters — credit card concerns, comprehensive engagement, low engagement and account management concerns — beside the cluster scatter plot." }
+      { src: "assets/img/projects/clustering_techniques_4.jpg", alt: "Analysis slide interpreting the four clusters (credit card concerns, comprehensive engagement, low engagement and account management concerns) beside the cluster scatter plot." }
     ]
   },
   {
@@ -198,7 +198,7 @@ window.PROJECTS = [
     role: "Developer",
     featured: false,
     body: [
-      "A Python 3D-animation script for a Linear Algebra course, processing and animating 3D objects using perspective projection — turning mathematical models into a dynamic visual tool. A demonstration of mathematical modeling, data handling, and visualization."
+      "A Python 3D-animation script for a Linear Algebra course, processing and animating 3D objects using perspective projection, turning mathematical models into a moving visual."
     ],
     tech: ["Python", "NumPy", "Matplotlib"],
     images: [
