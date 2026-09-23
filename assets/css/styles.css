@@ -813,7 +813,7 @@ h3 {
 ::view-transition-new(root) { animation-duration: 0.3s; }
 
 /* ---------- Gantt ---------- */
-.gantt { margin: 1.5rem 0 0; --lw: 13.5rem; }
+.gantt { margin: 1.5rem 0 0; --lw: 14.5rem; }
 .gantt-readout {
   display: flex;
   flex-wrap: wrap;
@@ -833,6 +833,17 @@ h3 {
 }
 .g-label { font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 0.75rem; }
 .g-label em { font-style: normal; color: var(--text-faint); }
+.g-vip {
+  margin-left: 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
 .g-track { position: relative; height: 10px; }
 .g-bar {
   position: absolute;

@@ -99,7 +99,7 @@
         </li>
         <li style="--x:20;--y:22;--r:8">
           <span class="settle-task">70 payouts waiting on confirmation</span>
-          <span class="settle-status">0 pending, no double payments</span>
+          <span class="settle-status">0 pending, checked for duplicates and incomplete work</span>
         </li>
         <li style="--x:-14;--y:-40;--r:-4">
           <span class="settle-task">The progress tracker uses five columns to do one column's job</span>
@@ -294,11 +294,11 @@ Solution: Making a program that eliminates rare combinations by
       <ol class="changelog">
         <li>
           <div class="cl-meta"><time datetime="2026-01">Jan 2026</time><span class="cl-tag">fixed within 24 hours</span></div>
-          <h3>A reservation cap that throttled the wrong people</h3>
+          <h3>A hoarding fix that slowed down the wrong people</h3>
           <dl class="cl-steps">
-            <div><dt>Shipped</dt><dd>A cap of 250 task reservations a day, to stop workers hoarding tasks.</dd></div>
-            <div><dt>Broke</dt><dd>It also throttled the legitimate high-volume QA workers.</dd></div>
-            <div><dt>Fixed</dt><dd>Swapped one lever for two: 3,000 a day, but only 24 per batch. Nobody could sit on 1,500 tasks anymore, and QA got its throughput back.</dd></div>
+            <div><dt>Shipped</dt><dd>A daily limit on how many tasks one worker could claim from the shared queue, so nobody could sit on work they weren't doing.</dd></div>
+            <div><dt>Broke</dt><dd>Our fastest QA reviewers hit the same limit, and real review work slowed down.</dd></div>
+            <div><dt>Fixed</dt><dd>Replaced one blunt limit with two: a much higher daily ceiling, plus a small cap on how much anyone can hold at once. Hoarding stayed blocked and QA got its speed back.</dd></div>
           </dl>
         </li>
         <li>
@@ -342,7 +342,7 @@ Solution: Making a program that eliminates rare combinations by
         <p class="arc-gap" aria-hidden="true">90 days later</p>
         <blockquote class="arc-quote pull-quote">
           <p>“One of our MVPs here. If you want something done right, ask a busy person.”</p>
-          <cite>A peer PM, May 2026, after I said no to their request because I was already on a P0</cite>
+          <cite>A peer PM, May 2026</cite>
         </blockquote>
       </div>
     </section>
