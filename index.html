@@ -211,6 +211,34 @@
             sites, moving data from QGIS through Firebase to an interactive Mapbox map, and co-led
             deployment to a live product.
           </p>
+
+          <figure class="bmap" id="bmap">
+            <div class="bmap-pipe">
+              <div class="bmap-stage">
+                <span class="bmap-tool">QGIS</span>
+                <span class="bmap-what">A feature on a layer</span>
+                <pre class="bmap-code" id="bmap-qgis"></pre>
+              </div>
+              <div class="bmap-stage">
+                <span class="bmap-tool">Firebase</span>
+                <span class="bmap-what">A document in the database</span>
+                <pre class="bmap-code" id="bmap-fb"></pre>
+              </div>
+              <div class="bmap-stage">
+                <span class="bmap-tool">Mapbox</span>
+                <span class="bmap-what">A pin on the public map</span>
+                <svg class="bmap-map" id="bmap-map" viewBox="0 0 100 140" role="img" aria-label="Map of the Philippines with published restoration sites"></svg>
+              </div>
+            </div>
+            <div class="dots-bar">
+              <button class="btn btn-text" id="bmap-go" type="button">Publish a site</button>
+              <span class="dots-count" aria-live="polite"><strong id="bmap-count">0</strong> of 7 sites on the map</span>
+            </div>
+            <figcaption>
+              One restoration site at a time, from GIS layer to database to map. Real mangrove areas,
+              example records. <a href="#work" data-open="bluemap">Full write-up</a>.
+            </figcaption>
+          </figure>
         </li>
 
         <li>
