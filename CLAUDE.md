@@ -24,14 +24,16 @@ commented-out bench of alternates, both ranked strongest first. See the
 
 ## Tailoring for one job
 
-Use the `tailor` skill (`.claude/skills/tailor/SKILL.md`) whenever Austin gives a
-job and asks for a tailored resume or a cover letter. It writes a private copy to
-`tailored/` (gitignored) and exports the PDF there. `resume.html` stays the
-public, general resume: edit it only when Austin asks to change the resume
-itself, not for one job.
+Tailoring happens in Pipeline Dream (the job tracker), at
+`D:\austi\Documents\Personal\pipeline-dream`. Its `tailor` skill reads this repo's
+`resume.html`, `src/`, and this file, then writes the tailored copy, the PDF, and
+the cover letter on its side. If Austin asks here for a resume or a letter for one
+job, tell him to run `/tailor` in a Pipeline Dream session.
 
-Cover letters live in Pipeline Dream (the job tracker), on the application row.
-The skill drafts the text; Pipeline Dream stores and prints it.
+`resume.html` stays the public, general resume: edit it only when Austin asks to
+change the resume itself, not for one job. The facts and rules in this repo
+(the bench, `src/`, the anonymization and dash rules) feed every tailored copy,
+so keep them current here.
 
 ## Confidentiality
 
