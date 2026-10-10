@@ -2,3 +2,7 @@
 # (performance reports, Slack-derived metrics, HR docs). Nothing in src/ is
 # part of the published site. Ignore the whole directory, not per-file patterns.
 src/
+
+# Per-job resume copies and PDFs from the tailor skill. They go to employers,
+# not to the site.
+tailored/
