@@ -19,8 +19,19 @@ bullets, where a dash reads as padding.
 ## Résumé bullets
 
 `resume.html` keeps 6 live bullets that print to one page, followed by a
-commented-out bench of alternates, both ranked strongest first. To tailor for an
-application, swap one in and one out. See the `ONE PAGE CUT LINE` comment.
+commented-out bench of alternates, both ranked strongest first. See the
+`ONE PAGE CUT LINE` comment.
+
+## Tailoring for one job
+
+Use the `tailor` skill (`.claude/skills/tailor/SKILL.md`) whenever Austin gives a
+job and asks for a tailored resume or a cover letter. It writes a private copy to
+`tailored/` (gitignored) and exports the PDF there. `resume.html` stays the
+public, general resume: edit it only when Austin asks to change the resume
+itself, not for one job.
+
+Cover letters live in Pipeline Dream (the job tracker), on the application row.
+The skill drafts the text; Pipeline Dream stores and prints it.
 
 ## Confidentiality
 
