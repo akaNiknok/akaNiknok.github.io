@@ -136,14 +136,15 @@
   /* ---------- Pareto portfolio Gantt ---------- */
   // Month-level dates; codenames deliberately left out (see CLAUDE.md).
   var GANTT = [
-    { name: "Project A", role: "Support PM", s: "2025-11-10", e: "2026-01-25" },
+    { name: "Project A", role: "Support PM", s: "2025-11-17", e: "2026-01-25" },
     { name: "Project B", role: "Support PM", s: "2025-11-17", e: "2026-01-27" },
     { name: "Project C", role: "Support PM", note: "joined midway, stayed to closure", s: "2026-01-09", e: "2026-06-23" },
     { name: "Project D", role: "Support PM", s: "2026-02-11", e: "2026-04-18" },
     { name: "Project E", role: "Lead PM", note: "cold start through closeout", s: "2026-02-22", e: "2026-05-05" },
     { name: "Project F", role: "Stand-in", note: "emergency weekend handover", s: "2026-03-07", e: "2026-03-08" },
-    { name: "Project G", role: "Support PM", vip: true, note: "Pareto's VIP project at the time", s: "2026-04-24", e: "2026-08-12" },
-    { name: "Project H", role: "Support PM", s: "2026-09-01", e: null }
+    { name: "Project G", role: "Weekend PM", vip: true, note: "Pareto's VIP project at the time; also weekend technical lead support", s: "2026-04-24", e: "2026-08-17" },
+    { name: "Project H", role: "Weekend PM", note: "owns expert recruitment", s: "2026-09-01", e: null },
+    { name: "Project I", role: "Lead PM", note: "engineering CAD scoping", s: "2026-10-01", e: null }
   ];
   var ganttChart = doc.getElementById("gantt-chart");
   var ganttScrub = doc.getElementById("gantt-scrub");
@@ -168,7 +169,7 @@
         '<span class="g-track"><span class="g-bar' + (p.e ? "" : " g-open") + '" style="left:' +
         pct(s) + "%;width:" + Math.max(pct(e) - pct(s), 0.8) + '%"></span></span>';
       ganttChart.appendChild(lane);
-      return { el: lane, s: s, e: e, role: p.role };
+      return { el: lane, s: s, e: p.e ? e : Infinity, role: p.role }; // open bars never end, even if the scrub rounds past now
     });
 
     var axis = doc.createElement("div");

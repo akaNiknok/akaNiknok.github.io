@@ -95,7 +95,7 @@
         </li>
         <li style="--x:-26;--y:-18;--r:-5">
           <span class="settle-task">Reviewer scores are drifting, and nobody agrees on whose</span>
-          <span class="settle-status">measured, flagged, then automated</span>
+          <span class="settle-status">measured, flagged, then adopted by QA</span>
         </li>
         <li style="--x:20;--y:22;--r:8">
           <span class="settle-task">70 payouts waiting on confirmation</span>
@@ -103,10 +103,18 @@
         </li>
         <li style="--x:-14;--y:-40;--r:-4">
           <span class="settle-task">The progress tracker uses five columns to do one column's job</span>
-          <span class="settle-status">rebuilt, then reused on another project</span>
+          <span class="settle-status">rebuilt, then cut over in a one-hour window</span>
+        </li>
+        <li style="--x:-22;--y:30;--r:5">
+          <span class="settle-task">A client pauses the project mid-incentive week, and the QA team is furious</span>
+          <span class="settle-status">one clear post, and the weekend calmed down</span>
+        </li>
+        <li style="--x:16;--y:-34;--r:-6">
+          <span class="settle-task">298 labels flagged for an edge-case payout</span>
+          <span class="settle-status">69 real cases, sized before leadership decided</span>
         </li>
       </ol>
-      <p class="settle-caption">Real items from my first ten months at Pareto.</p>
+      <p class="settle-caption">Real items from my first eleven months at Pareto.</p>
     </section>
 
     <!-- About + Experience -->
@@ -136,7 +144,8 @@
           </div>
           <p class="skim-only">
             Seven projects in my first six months, one of them run end to end as sole Lead PM.
-            <strong>Promoted a level</strong> in under six months.
+            <strong>Promoted a level</strong> in under six months, and now also the PM point of
+            contact for quality systems.
           </p>
           <div class="read-only">
             <p>
@@ -145,7 +154,8 @@
               and accounting. In my first six months I went from supporting two projects to seven,
               and ran one as sole Lead PM from a cold start through scoping, delivery, and closeout.
               In under six months I was <strong>promoted a level</strong>, rated <em>exceeds
-              expectations, delivering one level above scope</em>.
+              expectations, delivering one level above scope</em>. Since then I've picked up two more
+              projects and become the PM point of contact for quality systems across projects.
             </p>
             <p>
               I tend to build the systems other people then rely on. I rebuilt the central progress
@@ -156,6 +166,15 @@
               faster, and I contributed a Claude Code workflow that engineers, delivery leads, TPMs,
               and PMs across the company now reuse. When a live project needed an emergency handover,
               I picked it up on a few hours' notice and cleared every open issue the same shift.
+            </p>
+            <p>
+              Some of the job is keeping people steady. When a client paused a project in the middle
+              of an incentive week, the QA team was stuck holding work with no answer on approvals or
+              pay. I wrote the one post that pulled it together: what had stopped, what they could
+              still approve, a 7-day expiry so nothing they held would lapse, and an honest line on
+              incentives instead of a promise. Leads and QA called it out at the next sync. On my
+              current project I own expert recruitment end to end, which helped hit a quarterly
+              delivery target at 106%.
             </p>
             <p>
               More of the work now is judgment about model quality. I separated a real defect (a
@@ -311,7 +330,7 @@ Solution: Making a program that eliminates rare combinations by
       <p class="calib-note">
         Synthetic reviewers shaped like the real analysis: a 1 to 5 scale, only reviewers with 30+
         reviews, flagged above a divergence of 0.12. The real finding was two reviewers giving top
-        marks by default. The analysis was adopted and automated.
+        marks by default. The QA lead adopted the analysis and asked for an automated version.
       </p>
     </section>
 
@@ -335,7 +354,7 @@ Solution: Making a program that eliminates rare combinations by
           <dl class="cl-steps">
             <div><dt>Shipped</dt><dd>A new filter on a worker dashboard, built at my request.</dd></div>
             <div><dt>Broke</dt><dd>It let any worker look up any other worker's submission history.</dd></div>
-            <div><dt>Fixed</dt><dd>I asked for an urgent rollback of my own request, on privacy grounds.</dd></div>
+            <div><dt>Fixed</dt><dd>I asked for an urgent rollback of my own request, on privacy grounds. A QA-only version replaced it the next week.</dd></div>
           </dl>
         </li>
         <li>
@@ -356,6 +375,15 @@ Solution: Making a program that eliminates rare combinations by
             <div><dt>Then</dt><dd>Reported it in the same format as the wins. A miss reported straight makes the other numbers easier to trust.</dd></div>
           </dl>
         </li>
+        <li>
+          <div class="cl-meta"><time datetime="2026-09">Sep 2026</time><span class="cl-tag">corrected in public</span></div>
+          <h3>Guidance I posted to the whole team</h3>
+          <dl class="cl-steps">
+            <div><dt>Shipped</dt><dd>Process guidance, posted in the open project channel.</dd></div>
+            <div><dt>Broke</dt><dd>It was wrong.</dd></div>
+            <div><dt>Fixed</dt><dd>Posted the correction in the same channel (“My earlier message was wrong, apologies!”) instead of patching it quietly in DMs.</dd></div>
+          </dl>
+        </li>
       </ol>
     </section>
 
@@ -368,9 +396,14 @@ Solution: Making a program that eliminates rare combinations by
           <cite>Peer feedback, Feb 2026</cite>
         </blockquote>
         <p class="arc-gap" aria-hidden="true">90 days later</p>
-        <blockquote class="arc-quote pull-quote">
+        <blockquote class="arc-quote arc-before">
           <p>“One of our MVPs here. If you want something done right, ask a busy person.”</p>
           <cite>A peer PM, May 2026</cite>
+        </blockquote>
+        <p class="arc-gap" aria-hidden="true">Two months later</p>
+        <blockquote class="arc-quote pull-quote">
+          <p>“An absolute powerhouse… highly technical for a PM… someone the project cannot afford to lose.”</p>
+          <cite>Peer feedback, Jul 2026</cite>
         </blockquote>
       </div>
     </section>
@@ -386,11 +419,10 @@ Solution: Making a program that eliminates rare combinations by
     <section class="section" id="now">
       <p class="section-label">Now</p>
       <ul class="now-list">
-        <li>Weekend PM on a new expert-recruiting project at Pareto.</li>
         <li>Looking for a PM role in AI delivery.</li>
-        <li>Rewriting this site so it sounds like me.</li>
+        <li>Rewriting this site.</li>
       </ul>
-      <p class="now-updated">Updated September 2026</p>
+      <p class="now-updated">Updated October 2026</p>
     </section>
 
     <!-- Contact -->
@@ -409,8 +441,7 @@ Solution: Making a program that eliminates rare combinations by
 
   <footer class="site-footer">
     <p class="colophon">
-      Plain HTML, CSS, and JavaScript on GitHub Pages, no build step. Written with Claude Code and
-      edited by me. Set in Newsreader and Schibsted Grotesk.
+      Written with Claude Code and edited by me. Set in Newsreader and Schibsted Grotesk.
     </p>
     <div class="footer-row">
       <span>© <span id="year"></span> Austin G. Imperial</span>
