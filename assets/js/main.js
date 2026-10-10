@@ -244,6 +244,98 @@
     });
   }
 
+  /* ---------- BlueMap: one site at a time, QGIS → Firebase → Mapbox ---------- */
+  var bmapSvg = doc.getElementById("bmap-map");
+  var bmapGo = doc.getElementById("bmap-go");
+  if (bmapSvg && bmapGo) {
+    // ponytail: coarse hand-traced outline (lng, lat), main islands only; reads as the
+    // Philippines at ~200px. Swap for a Natural Earth path if the map ever gets bigger.
+    var PH = [
+      [[120.6,18.5],[121.2,18.6],[122.2,18.5],[122.3,17.3],[122.5,16.2],[121.6,15.6],[121.6,14.7],[122,14],[122.6,14.2],[123,13.8],[123.8,13.8],[124.1,13],[124,12.6],[123.3,13],[122.6,13.3],[121.8,13.9],[120.9,13.7],[120.6,14.4],[120.1,14.8],[119.8,15.9],[120.3,16.2],[120.4,17.5]],
+      [[120.4,13.5],[121.2,13.4],[121.5,12.6],[121.1,12.2],[120.6,12.6],[120.3,13.1]],
+      [[119.3,11.4],[119.7,10.5],[118.8,9.6],[117.6,8.6],[117.2,8.4],[117.6,9],[118.5,10],[119,11]],
+      [[121.9,11.9],[122.6,11.5],[123.1,11.1],[122.6,10.5],[122,10.5],[121.9,11.3]],
+      [[122.9,10.9],[123.5,10.6],[123.2,9.3],[122.6,9.4],[122.4,10]],
+      [[123.9,11.3],[124,10.5],[123.4,9.5],[123.5,10.2]],
+      [[123.8,10.1],[124.5,10.1],[124.5,9.6],[123.9,9.6]],
+      [[123.2,12.5],[123.8,12.3],[123.6,11.9],[123.2,12.2]],
+      [[124.3,12.6],[125.3,12.3],[125.7,11.1],[125,11],[124.4,11.6]],
+      [[124.3,11.5],[125,11.3],[125.2,10.2],[124.8,10],[124.6,10.8],[124.3,11]],
+      [[122,7],[122.2,7.9],[123,8.5],[123.6,8.6],[124.2,8.3],[124.7,8.9],[125.5,9.8],[126,9.3],[126.6,7.3],[126.2,6.3],[125.6,5.6],[125.2,6],[124.2,6.2],[123.9,7],[123.4,7.7],[122.8,7.4]]
+    ];
+    // Real mangrove areas, but example records: not the live BlueMap dataset.
+    var SITES = [
+      { id: "banacon", name: "Banacon", prov: "Bohol", lng: 124.2, lat: 10.2 },
+      { id: "pagbilao", name: "Pagbilao", prov: "Quezon", lng: 121.7, lat: 13.9 },
+      { id: "kalibo", name: "Kalibo", prov: "Aklan", lng: 122.4, lat: 11.7 },
+      { id: "honda-bay", name: "Honda Bay", prov: "Palawan", lng: 118.9, lat: 9.9 },
+      { id: "guiuan", name: "Guiuan", prov: "Eastern Samar", lng: 125.7, lat: 11.1 },
+      { id: "bais", name: "Bais", prov: "Negros Oriental", lng: 123.1, lat: 9.6 },
+      { id: "zamboanga", name: "Zamboanga", prov: "Zamboanga", lng: 122.1, lat: 7 }
+    ];
+    var bx = function (lng) { return ((lng - 116.8) * 10).toFixed(1); };
+    var by = function (lat) { return ((19 - lat) * 10).toFixed(1); };
+    var NS = "http://www.w3.org/2000/svg";
+    bmapSvg.innerHTML = PH.map(function (poly) {
+      return '<polygon class="bmap-land" points="' + poly.map(function (p) { return bx(p[0]) + "," + by(p[1]); }).join(" ") + '"/>';
+    }).join("");
+
+    var bmapStages = doc.querySelectorAll("#bmap .bmap-stage");
+    var bmapQgis = doc.getElementById("bmap-qgis");
+    var bmapFb = doc.getElementById("bmap-fb");
+    var bmapCount = doc.getElementById("bmap-count");
+    var bmapNext = 0, bmapBusy = false;
+    var hot = function (i) {
+      bmapStages.forEach(function (s, n) { s.classList.toggle("hot", n === i); });
+    };
+    var later = function (ms, fn) { setTimeout(fn, reduceMotion ? 0 : ms); };
+
+    bmapGo.addEventListener("click", function () {
+      if (bmapBusy) return; // let the current site land first
+      if (bmapNext === SITES.length) {
+        bmapSvg.querySelectorAll(".bmap-pin").forEach(function (p) { p.remove(); });
+        bmapQgis.textContent = bmapFb.textContent = "";
+        bmapNext = 0;
+        bmapCount.textContent = "0";
+        bmapGo.textContent = "Publish a site";
+        hot(-1);
+        return;
+      }
+      var s = SITES[bmapNext], fid = bmapNext + 1;
+      bmapNext++;
+      bmapBusy = true;
+      hot(0);
+      bmapQgis.textContent =
+        "restoration_sites\n" +
+        "fid   " + fid + "\n" +
+        "name  " + s.name + "\n" +
+        "prov  " + s.prov + "\n" +
+        "geom  POINT (" + s.lng + " " + s.lat + ")";
+      later(550, function () {
+        hot(1);
+        bmapFb.textContent =
+          "sites/" + s.id + " {\n" +
+          '  name: "' + s.name + '",\n' +
+          '  province: "' + s.prov + '",\n' +
+          "  lng: " + s.lng + ",\n" +
+          "  lat: " + s.lat + "\n}";
+      });
+      later(1100, function () {
+        hot(2);
+        bmapSvg.querySelectorAll(".bmap-pin.new").forEach(function (p) { p.classList.remove("new"); });
+        var pin = doc.createElementNS(NS, "circle");
+        pin.setAttribute("class", "bmap-pin new");
+        pin.setAttribute("cx", bx(s.lng));
+        pin.setAttribute("cy", by(s.lat));
+        pin.setAttribute("r", "2.6");
+        bmapSvg.appendChild(pin);
+        bmapCount.textContent = String(bmapNext);
+        bmapGo.textContent = bmapNext === SITES.length ? "Start over" : "Publish another";
+        bmapBusy = false;
+      });
+    });
+  }
+
   /* ---------- Reviewer calibration demo ---------- */
   // Synthetic reviewers shaped like the real analysis. Scores are counts on a 1-5 scale.
   var REVIEWERS = [
@@ -538,6 +630,12 @@
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }, reduceMotion ? 0 : 200);
   }
+
+  doc.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-open]");
+    var p = a && projects.filter(function (q) { return q.id === a.dataset.open; })[0];
+    if (p) { e.preventDefault(); openModal(p); }
+  });
 
   if (modal) {
     modal.addEventListener("click", function (e) {
