@@ -5,6 +5,33 @@
 // the body copy below, revealed on hover/focus and in the modal.
 window.PROJECTS = [
   {
+    id: "memento-mori",
+    title: "Memento Mori personal finance system",
+    impact: "Telegram, a web app, and bank emails write to one ledger, at no monthly cost",
+    reality: [
+      "Three versions in twelve weeks",
+      "Sheets + Apps Script → Worker + D1",
+      "Gemini structured output reads messages and emails",
+      "87 tagged releases, zero runtime dependencies"
+    ],
+    tags: ["Full stack", "AI"],
+    year: "2025–present",
+    role: "Personal project",
+    featured: true,
+    body: [
+      "The finance system I use every day, and the codebase I learn the most from. I send “coffee 120 maya” to a Telegram bot, type into an installable web app, or do nothing and let it read my bank's emails. All three write to one SQL database through the same handlers. It is <a href='https://github.com/akaNiknok/memento-mori' target='_blank' rel='noopener'>public on GitHub</a>, and every screenshot uses invented data.",
+      "It started in November 2025 as an n8n workflow on my laptop that sent each message through Gemini into Google Sheets. Then it had three lives in twelve weeks: Apps Script and Sheets in v1, a Cloudflare Worker and D1 as the whole backend in v2, and a full redesign in v3. Each version replaced the part that hurt the most, and each one removed infrastructure.",
+      "Most of what I know about production came from its failures. Telegram kept resending the same message because Apps Script answered with a redirect, so a 15-line Worker answered first; that Worker grew into the backend. A slow Gemini call let Telegram send a message twice, so the webhook now claims the update ID on its first line. A daily interest job disagreed with the bank by 1.33 pesos, so I deleted it. A calculation that disagrees with the bank is worse than none.",
+      "Gemini reads free text and bank emails with structured output, and every receipt has an Undo button and a link to the source email, because a model can misread. An MCP server lets AI clients such as Claude read the ledger with a read-only token. Money is stored as integer millionths, a retry never makes a second row, and 156 offline tests (110 of them on a real SQLite database) cover the handlers. More than 1,200 transactions so far, at no monthly cost."
+    ],
+    tech: ["Cloudflare Workers", "Cloudflare D1", "Gemini", "Telegram Bot API", "Google Apps Script", "MCP", "JavaScript"],
+    images: [
+      { src: "assets/img/projects/memento_mori_dashboard.webp", alt: "The Summary screen: net worth, money left to spend this month, the net worth history, the time to financial independence and the emergency runway. Invented data." },
+      { src: "assets/img/projects/memento_mori_phone.webp", alt: "The Activity screen on a phone: a list of recent transactions grouped by day. Invented data." },
+      { src: "assets/img/projects/memento_mori_evolution.gif", alt: "The Summary screen in v1, v2 and v3, one after the other, with the same invented data." }
+    ]
+  },
+  {
     id: "acts",
     title: "ACTS enrollment refinement",
     impact: "Cut staff overtime ~80% and saved ₱625,540 a year",
