@@ -5,7 +5,7 @@ directly and served as-is by GitHub Pages.
 
 ## Writing conventions
 
-**No em dashes in résumé or site bullet points.** Use parentheses, commas, or
+**No em dashes in resume or site bullet points.** Use parentheses, commas, or
 regular hyphens instead. Applies to the literal character and to the `&mdash;`
 and `&ndash;` entities.
 
@@ -16,7 +16,7 @@ and `&ndash;` entities.
 Prose paragraphs on `index.html` may still use em dashes; the rule is about
 bullets, where a dash reads as padding.
 
-## Résumé bullets
+## Resume bullets
 
 `resume.html` keeps 6 live bullets that print to one page, followed by a
 commented-out bench of alternates, both ranked strongest first. See the
