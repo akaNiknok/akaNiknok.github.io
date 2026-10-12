@@ -5,6 +5,39 @@
 // the body copy below, revealed on hover/focus and in the modal.
 window.PROJECTS = [
   {
+    id: "pm-data-tool",
+    title: "Self-serve data tool for PMs",
+    impact: "1,700+ submissions pulled in under 2 minutes, not ~14 hours by hand",
+    reality: [
+      "Every data pull went through me",
+      "Rebuilt for PMs who don't code",
+      "Reads by default, writes for admins only",
+      "One-command install, no Python setup",
+      "Real-user pilot came last, should have come first"
+    ],
+    tags: ["Internal tools", "Python"],
+    year: "2026",
+    role: "Builder, alongside my PM role",
+    featured: true,
+    body: [
+      "PMs kept asking the same questions about the client's task platform. Which problems did this expert submit? Who labeled what, and when? Where are we on delivery? The platform answers each one, but only one item at a time. Finding a single submission by hand took about 30 seconds.",
+      "It started in May 2026 as one script for my own project. It pulled the prompts and grading guidelines for 54 problems in 2 minutes. It grew into a toolkit that checks workflow tags, runs QA checks and fixes metadata in bulk; it added one-line descriptions to 1,167 problems. I shared it with the TPMs, the automation team and a fellow PM, and other PMs started asking me to run pulls for them. By September, every pull went through me. One walkthrough took a one-hour call. Another PM could not finish the setup at all.",
+      "So I rebuilt it for people who don't code. The goal: a PM answers their own question without me. The home page now asks \"What do you need?\" and shows six common questions as cards. A built-in glossary explains the platform's terms where they appear, because people mixed up words like \"run\" and \"attempt.\" Install is one pasted command, with no Python setup. A button installs updates.",
+      "Three decisions shaped it. First, I kept it on each PM's own computer and made the install painless instead of hosting it. Each PM signs in with their own account, so the app only sees what they can already see.",
+      "Second, the app reads by default. A few tools change data on the platform, so I put one check in front of every write. That check uses the platform's own admin flag, so I didn't have to build a role system. Every write also shows a confirmation screen, and a change to more than 20 problems makes you type the count.",
+      "Third, I said no to a JavaScript framework rewrite and a tooltip library. Plain HTML did the job, and fewer parts meant fewer things to break for people who can't debug them.",
+      "I also wrote every label and help line in Simplified Technical English: active voice, one idea per sentence, one word for each thing. The app says \"attempt\" everywhere because the platform does.",
+      "On one project, the tool pulls all 1,700+ submissions in under two minutes. By hand, at about 30 seconds each, that is roughly 14 hours.",
+      "If I did it again, I would put it in front of two PMs much earlier. I finished the install and the wording first, so the pilot with real users came last.",
+      "The screenshots show the home page before and after the redesign. The platform's name and other internal names are replaced with placeholders."
+    ],
+    tech: ["Python", "FastAPI", "htmx", "Jinja", "SQLite", "GitHub Actions", "Claude Code"],
+    images: [
+      { src: "assets/img/projects/pm_data_tool_after.webp", alt: "After the redesign: the home page asks \"What do you need?\" and shows six common questions as cards, with a 60-second primer on the platform's terms open below. Internal names replaced with placeholders." },
+      { src: "assets/img/projects/pm_data_tool_before.webp", alt: "Before the redesign: one long form with an environment picker, a problem ID box for each group and feature checkboxes. Internal names replaced with placeholders." }
+    ]
+  },
+  {
     id: "memento-mori",
     title: "Memento Mori personal finance system",
     impact: "Telegram, a web app, and bank emails write to one ledger, at no monthly cost",
