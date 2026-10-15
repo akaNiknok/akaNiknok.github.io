@@ -126,9 +126,13 @@ a:hover { color: var(--text); }
   font-size: 15px;
   color: var(--text);
   position: relative;
+  display: inline-flex;
+  align-items: center;
   transition: color 0.3s ease;
 }
-.brand:hover { color: var(--accent); }
+.brand-mark { display: block; height: 24px; width: auto; }
+.brand-line { fill: var(--accent); }
+.brand:hover { color: var(--text-soft); }
 /* An AI PM whose initials are AGI. */
 .brand::after {
   content: attr(data-quip);
