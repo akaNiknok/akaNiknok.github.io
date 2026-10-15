@@ -194,19 +194,20 @@
       white-space: nowrap;
     }
     .job ul { margin: 0; padding-left: 0; list-style: none; }
+    /* no positioning on li: Chrome paints positioned boxes last, which puts every
+       bullet after all other text in the PDF and scrambles ATS reading order */
     .job li {
-      position: relative;
       padding-left: 18px;
       margin-bottom: 3px;
       color: var(--soft);
     }
     .job li::before {
       content: "";
-      position: absolute;
-      left: 1px;
-      top: 0.62em;
+      display: inline-block;
       width: 6px;
       height: 6px;
+      margin: 0 11px 0 -17px;
+      vertical-align: 0.12em;
       border-radius: 50%;
       background: var(--accent-bright);
     }
@@ -250,6 +251,20 @@
       }
       .contact a { color: var(--faint) !important; }
       header { padding-top: 4px; }
+      /* single column so ATS parsers read Experience, then Skills, then Education in order */
+      .columns { display: block; }
+      aside { border-left: none; padding-left: 0; }
+      /* wide tracking extracts as "E X P E R I E N C E", tight tracking as "AustinG.Imperial" */
+      h2 { letter-spacing: 0.04em; }
+      header h1 { letter-spacing: 0; }
+      /* stacked sidebar costs height; tighten spacing to stay on one page */
+      body { line-height: 1.4; }
+      .summary { line-height: 1.5; }
+      h2 { margin: 10px 0 6px; }
+      .job { margin-bottom: 6px; }
+      .job li { margin-bottom: 1px; }
+      .skills p { margin-bottom: 1px; }
+      .edu .sub { margin-bottom: 0; }
       .job, .edu-item { page-break-inside: avoid; break-inside: avoid; }
       h2 { page-break-after: avoid; break-after: avoid; }
     }
