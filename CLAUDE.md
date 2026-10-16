@@ -22,6 +22,10 @@ bullets, where a dash reads as padding.
 commented-out bench of alternates, both ranked strongest first. See the
 `ONE PAGE CUT LINE` comment.
 
+The "Download PDF" button serves `assets/Austin-Imperial-Resume.pdf`. A
+PostToolUse hook in `.claude/settings.json` regenerates it with headless Edge
+whenever `resume.html` is edited; commit the PDF alongside `resume.html`.
+
 ## Tailoring for one job
 
 Tailoring happens in Pipeline Dream (the job tracker), at

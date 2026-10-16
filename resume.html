@@ -6,8 +6,12 @@
     1. Ask Claude to edit this file (e.g. "add a new role to my resume").
        For one job, use the tailor skill in Pipeline Dream: it leaves this file alone.
     2. Open this page (locally or at https://akaniknok.github.io/resume.html).
-    3. Click "Download PDF" → in the print dialog choose
-       "Save as PDF", set margins to Default, and save.
+    3. The "Download PDF" button serves assets/Austin-Imperial-Resume.pdf. A Claude
+       Code hook (.claude/settings.json) regenerates it after Claude edits this file.
+       After a hand edit, run from the repo root in Git Bash, on one line:
+         "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless
+         --no-pdf-header-footer --print-to-pdf="$PWD/assets/Austin-Imperial-Resume.pdf"
+         "file:///$PWD/resume.html"
   Keep Pareto-internal details out (see the anonymization note in the repo).
   ============================================================
 -->
@@ -78,7 +82,7 @@
       transition: color 0.2s ease;
     }
     .toolbar a:hover { color: var(--accent); }
-    .download {
+    .toolbar .download {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -93,7 +97,7 @@
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.25s ease;
     }
-    .download:hover {
+    .toolbar .download:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 26px color-mix(in srgb, var(--accent-bright) 40%, transparent);
     }
@@ -273,7 +277,7 @@
 <body>
   <div class="toolbar">
     <a href="index.html">← Back to site</a>
-    <button class="download" type="button" onclick="window.print()">⬇ Download PDF</button>
+    <a class="download" href="assets/Austin-Imperial-Resume.pdf" download>⬇ Download PDF</a>
   </div>
 
   <article class="sheet">

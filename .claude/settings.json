@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "grep -q '\"file_path\": *\"[^\"]*resume\\.html\"' || exit 0; cd \"$CLAUDE_PROJECT_DIR\" && d=$(pwd -W) && \"/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe\" --headless --no-pdf-header-footer --print-to-pdf=\"$d/assets/Austin-Imperial-Resume.pdf\" \"file:///$d/resume.html\" >/dev/null 2>&1"
+          }
+        ]
+      }
+    ]
+  }
+}
