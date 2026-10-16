@@ -641,7 +641,73 @@ h3 {
 }
 .modal-shot:hover,
 .modal-shot:focus-visible { border-color: var(--border-strong); }
-.modal-shot img { display: block; width: 100%; height: auto; }
+.modal-shot img { display: block; width: 100%; height: auto; aspect-ratio: auto 16 / 10; } /* holds space until loaded, so charts below do not look visible on open */
+
+/* Project charts (built by vizEl in main.js) */
+.viz {
+  margin: 0 0 1.25rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.viz-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; list-style: none; margin: 0; padding: 0; }
+.viz-flow li { display: flex; align-items: center; gap: 0.45rem; animation: viz-in 0.5s var(--ease) both; }
+.viz-flow li:not(:last-child)::after { content: "→"; content: "→" / ""; color: var(--text-faint); }
+.viz-flow span {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+.viz-flow .is-gate { border-color: var(--accent); background: var(--accent-soft); color: var(--text); font-weight: 600; animation: viz-glow 1.2s 0.8s ease both; }
+@keyframes viz-in { from { opacity: 0; transform: translateY(6px); } }
+@keyframes viz-glow { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 40% { box-shadow: 0 0 0 6px var(--accent-soft); } }
+
+.viz-bar { display: grid; grid-template-columns: 7.5rem 1fr 4.5rem; gap: 0.75rem; align-items: center; font-size: 13.5px; color: var(--text-soft); }
+.viz-bar + .viz-bar { margin-top: 0.6rem; }
+.viz-track, .viz-goal-track { position: relative; height: 0.6rem; }
+.viz-track { border-radius: 999px; background: var(--accent-soft); }
+.viz-fill { display: block; height: 100%; border-radius: inherit; background: var(--accent-bright); animation: viz-grow 1.1s var(--ease) both; }
+@keyframes viz-grow { from { width: 0; } }
+.viz-goal { position: absolute; top: -0.3rem; bottom: -0.3rem; width: 2px; margin-left: -1px; background: var(--text); animation: viz-fade 0.4s 0.9s both; }
+.viz-goal-row { margin-bottom: -0.1rem; }
+.viz-goal-label { position: absolute; bottom: 0; transform: translateX(-50%); white-space: nowrap; font-family: var(--font-mono); font-size: 12px; color: var(--text); animation: viz-fade 0.4s 0.9s both; }
+@keyframes viz-fade { from { opacity: 0; } }
+.viz-val { font-family: var(--font-mono); color: var(--text); text-align: right; }
+
+/* Messy tracker that tidies itself: .is-clean collapses the extra columns and swaps the text. */
+.sheet { overflow-x: auto; font-size: 11.5px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elev); }
+.sheet-row { display: flex; }
+.sheet-row > span { flex: none; padding: 0.4rem 0.55rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); white-space: nowrap; overflow: hidden; color: var(--text-soft); }
+.sheet-row:last-child > span { border-bottom: 0; }
+.sheet-head > span { font-weight: 600; color: var(--text-faint); background: var(--bg); }
+.c-book { width: 5.4em; }
+.c-who { width: 7em; }
+.sheet-row > .c-status { flex: 1 0 8em; border-right: 0; }
+.sheet .c-who { transition: width 0.8s var(--ease), padding 0.8s var(--ease), opacity 0.4s ease, border-width 0.8s, background 0.6s ease; }
+.sheet.is-clean .extra { width: 0; padding-inline: 0; opacity: 0; border-right-width: 0; }
+.sheet .hl { background: rgba(250, 204, 21, 0.28); }
+.sheet.is-clean .hl { background: transparent; }
+.sw { display: inline-grid; vertical-align: top; }
+.sw > span { grid-area: 1 / 1; transition: opacity 0.5s 0.3s ease; }
+.sw-a, .sheet.is-clean .sw-b { opacity: 0; }
+.sheet.is-clean .sw-a { opacity: 1; }
+.is-key .sw-a { color: var(--accent); font-weight: 600; }
+.viz-replay {
+  margin-top: 0.7rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: none;
+  font: 12.5px var(--font-mono);
+  color: var(--text-soft);
+  cursor: pointer;
+}
+.viz-replay:hover { color: var(--text); border-color: var(--text-faint); }
+.viz:not(.is-live) *, .viz:not(.is-live) *::after { animation-play-state: paused; }
+.viz figcaption { margin-top: 0.8rem; font-size: 13px; color: var(--text-faint); }
 
 /* ---------- Lightbox ---------- */
 .lightbox {

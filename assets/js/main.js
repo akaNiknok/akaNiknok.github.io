@@ -566,6 +566,144 @@
     return modal.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
   }
 
+  // Small animated chart for a project. `flow`: steps, optional `gate` index.
+  // `bars`: [label, value, max, shown], optional `goal`: [value, label] on the same scale.
+  // `sheet`: a messy tracker that tidies itself (see the tracker entry in projects.js).
+  function vizEl(v) {
+    var fig = doc.createElement("figure");
+    fig.className = "viz";
+    if (v.flow) {
+      var ol = doc.createElement("ol");
+      ol.className = "viz-flow";
+      v.flow.forEach(function (step, i) {
+        var li = doc.createElement("li");
+        li.style.animationDelay = i * 0.15 + "s";
+        var pill = doc.createElement("span");
+        pill.textContent = step;
+        if (i === v.gate) pill.className = "is-gate";
+        li.appendChild(pill);
+        ol.appendChild(li);
+      });
+      fig.appendChild(ol);
+    }
+    var bars = v.bars || [];
+    var goalPct = v.goal && bars.length ? (v.goal[0] / bars[0][2]) * 100 + "%" : null;
+    if (goalPct) {
+      var head = doc.createElement("div");
+      head.className = "viz-bar viz-goal-row";
+      head.innerHTML = '<span></span><span class="viz-goal-track"><span class="viz-goal-label"></span></span><span></span>';
+      var gl = head.querySelector(".viz-goal-label");
+      gl.textContent = v.goal[1];
+      gl.style.left = goalPct;
+      fig.appendChild(head);
+    }
+    bars.forEach(function (b, i) {
+      var row = doc.createElement("div");
+      row.className = "viz-bar";
+      row.innerHTML = '<span></span><span class="viz-track"><span class="viz-fill"></span></span><span class="viz-val"></span>';
+      row.children[0].textContent = b[0];
+      var fill = row.querySelector(".viz-fill");
+      fill.style.width = (b[1] / b[2]) * 100 + "%";
+      fill.style.animationDelay = 0.15 + i * 0.2 + "s";
+      if (goalPct) {
+        var g = doc.createElement("span");
+        g.className = "viz-goal";
+        g.style.left = goalPct;
+        row.querySelector(".viz-track").appendChild(g);
+      }
+      row.children[2].textContent = b[3];
+      fig.appendChild(row);
+    });
+    if (v.sheet) fig.appendChild(sheetEl(v.sheet));
+    if (v.caption) {
+      var cap = doc.createElement("figcaption");
+      cap.textContent = v.caption;
+      fig.appendChild(cap);
+    }
+    if (v.sheet && !reduceMotion) {
+      var replay = doc.createElement("button");
+      replay.type = "button";
+      replay.className = "viz-replay";
+      replay.textContent = "Replay";
+      replay.addEventListener("click", function () { tidy(fig.querySelector(".sheet")); });
+      fig.appendChild(replay);
+    }
+    // Play the animation once the chart scrolls into view, not on open.
+    var play = function () {
+      fig.classList.add("is-live");
+      if (v.sheet) tidy(fig.querySelector(".sheet"));
+    };
+    if (!window.IntersectionObserver) { play(); return fig; }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { io.disconnect(); play(); }
+    }, { threshold: 0.6 });
+    io.observe(fig);
+    return fig;
+  }
+
+  function swapEl(before, after) {
+    var sw = doc.createElement("span");
+    sw.className = "sw";
+    sw.innerHTML = '<span class="sw-b"></span><span class="sw-a"></span>';
+    sw.children[0].textContent = before;
+    sw.children[1].textContent = after;
+    return sw;
+  }
+
+  function sheetEl(s) {
+    var sheet = doc.createElement("div");
+    sheet.className = "sheet";
+    sheet.setAttribute("aria-hidden", "true");
+    var cell = function (row, cls, content) {
+      var c = doc.createElement("span");
+      c.className = cls;
+      if (typeof content === "string") c.textContent = content; else c.appendChild(content);
+      row.appendChild(c);
+      return c;
+    };
+    var head = doc.createElement("div");
+    head.className = "sheet-row sheet-head";
+    cell(head, "c-book", "Book");
+    s.cols.forEach(function (name, k) {
+      cell(head, k ? "c-who extra" : "c-who", k ? name : swapEl(name, s.cols[s.cols.length - 1]));
+    });
+    cell(head, "c-status", "Status");
+    sheet.appendChild(head);
+    s.rows.forEach(function (r) {
+      var row = doc.createElement("div");
+      row.className = "sheet-row";
+      cell(row, "c-book", r[0]);
+      s.cols.forEach(function (_, k) {
+        var has = r[2].indexOf(k) !== -1 ? r[1] : "";
+        var c = cell(row, k ? "c-who extra" : "c-who", k ? has : swapEl(has, r[1]));
+        // Names typed into more than one column: the mess the redesign removed.
+        if (has && r[2].length > 1) c.classList.add("hl");
+      });
+      cell(row, "c-status" + (r[4] === s.key ? " is-key" : ""), swapEl(r[3], r[4]));
+      sheet.appendChild(row);
+    });
+    return sheet;
+  }
+
+  function tidy(sheet) {
+    sheet.classList.remove("is-clean");
+    void sheet.offsetWidth; // restart the transition on replay
+    setTimeout(function () { sheet.classList.add("is-clean"); }, reduceMotion ? 0 : 1600);
+  }
+
+  function shotEl(img) {
+    var btn = doc.createElement("button");
+    btn.type = "button";
+    btn.className = "modal-shot";
+    btn.title = "Enlarge";
+    var el = doc.createElement("img");
+    el.src = img.src;
+    el.alt = img.alt;
+    btn.appendChild(el);
+    btn.addEventListener("click", function () { openLightbox(img); });
+    return btn;
+  }
+
   function openModal(p) {
     if (!modal) return;
     lastFocused = doc.activeElement;
@@ -573,23 +711,19 @@
     modalEyebrow.textContent = meta;
     modalTitle.textContent = p.title;
     modalBody.innerHTML = "";
-    p.body.forEach(function (para) {
-      var el = doc.createElement("p");
-      el.innerHTML = para;
-      modalBody.appendChild(el);
-    });
+    if (p.visual) modalBody.appendChild(vizEl(p.visual));
+    // Body items: a string is a paragraph, {src, alt} a screenshot, anything else a chart.
     // ponytail: images are built per-open, so nothing loads until a project is opened.
-    (p.images || []).forEach(function (img) {
-      var btn = doc.createElement("button");
-      btn.type = "button";
-      btn.className = "modal-shot";
-      btn.title = "Enlarge";
-      var el = doc.createElement("img");
-      el.src = img.src;
-      el.alt = img.alt;
-      btn.appendChild(el);
-      btn.addEventListener("click", function () { openLightbox(img); });
-      modalBody.appendChild(btn);
+    p.body.concat(p.images || []).forEach(function (item) {
+      if (typeof item === "string") {
+        var el = doc.createElement("p");
+        el.innerHTML = item;
+        modalBody.appendChild(el);
+      } else if (item.src) {
+        modalBody.appendChild(shotEl(item));
+      } else {
+        modalBody.appendChild(vizEl(item));
+      }
     });
     if (modalReality) {
       modalReality.innerHTML = "";

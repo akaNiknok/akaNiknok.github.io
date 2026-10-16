@@ -1,41 +1,126 @@
 // Project data for the Selected Work section.
-// Sourced/adapted from texts.md and capstone.md. Keep this in sync with those.
+// Pareto entries are drawn from src/ (gitignored); keep them anonymized per CLAUDE.md.
 // `featured: true` rows show in the editorial list before "see all" is expanded.
 // `reality` = the "what it actually took" layer: short fragments compressed from
 // the body copy below, revealed on hover/focus and in the modal.
 window.PROJECTS = [
   {
     id: "pm-data-tool",
-    title: "Self-serve data tool for PMs",
-    impact: "1,700+ submissions pulled in under 2 minutes, not ~14 hours by hand",
+    title: "Tools and pipelines for a VIP project",
+    impact: "1,700+ submissions pulled in under 2 minutes, about 200 tasks a week delivered, every payout closed with 0 pending",
     reality: [
-      "Every data pull went through me",
-      "Rebuilt for PMs who don't code",
-      "Reads by default, writes for admins only",
-      "One-command install, no Python setup",
+      "Every data pull went through me, so I rebuilt it for PMs who don't code",
+      "One gate before delivery",
+      "Completion checked in the task platform before any payment",
       "Real-user pilot came last, should have come first"
     ],
-    tags: ["Internal tools", "Python"],
+    tags: ["Internal tools", "Project management", "Python"],
     year: "2026",
-    role: "Builder, alongside my PM role",
+    role: "Weekend PM and weekend technical lead support",
     featured: true,
     body: [
-      "PMs kept asking the same questions about the client's task platform. Which problems did this expert submit? Who labeled what, and when? Where are we on delivery? The platform answers each one, but only one item at a time. Finding a single submission by hand took about 30 seconds.",
-      "It started in May 2026 as one script for my own project. It pulled the prompts and grading guidelines for 54 problems in 2 minutes. It grew into a toolkit that checks workflow tags, runs QA checks and fixes metadata in bulk; it added one-line descriptions to 1,167 problems. I shared it with the TPMs, the automation team and a fellow PM, and other PMs started asking me to run pulls for them. By September, every pull went through me. One walkthrough took a one-hour call. Another PM could not finish the setup at all.",
-      "So I rebuilt it for people who don't code. The goal: a PM answers their own question without me. The home page now asks \"What do you need?\" and shows six common questions as cards. A built-in glossary explains the platform's terms where they appear, because people mixed up words like \"run\" and \"attempt.\" Install is one pasted command, with no Python setup. A button installs updates.",
-      "Three decisions shaped it. First, I kept it on each PM's own computer and made the install painless instead of hosting it. Each PM signs in with their own account, so the app only sees what they can already see.",
-      "Second, the app reads by default. A few tools change data on the platform, so I put one check in front of every write. That check uses the platform's own admin flag, so I didn't have to build a role system. Every write also shows a confirmation screen, and a change to more than 20 problems makes you type the count.",
-      "Third, I said no to a JavaScript framework rewrite and a tooltip library. Plain HTML did the job, and fewer parts meant fewer things to break for people who can't debug them.",
-      "I also wrote every label and help line in Simplified Technical English: active voice, one idea per sentence, one word for each thing. The app says \"attempt\" everywhere because the platform does.",
-      "On one project, the tool pulls all 1,700+ submissions in under two minutes. By hand, at about 30 seconds each, that is roughly 14 hours.",
-      "If I did it again, I would put it in front of two PMs much earlier. I finished the install and the wording first, so the pilot with real users came last.",
-      "The screenshots show the home page before and after the redesign. The platform's name and other internal names are replaced with placeholders."
-    ],
-    tech: ["Python", "FastAPI", "htmx", "Jinja", "SQLite", "GitHub Actions", "Claude Code"],
-    images: [
+      "Pareto's VIP project at the time: experts wrote legal tasks with grading guidelines for the client. Three problems kept coming back, and I built a fix for each.",
+      "<strong>Getting the data out.</strong> The client's task platform answers questions one item at a time, about 30 seconds each. A script I wrote for myself grew into a toolkit, and soon every PM's data pull went through me. So I rebuilt it for people who don't code: common questions as cards, a glossary of the platform's terms, a one-command install, and a confirmation screen before any write. It pulls all 1,700+ submissions in under two minutes, about 14 hours by hand. (Screenshots use placeholder names.)",
       { src: "assets/img/projects/pm_data_tool_after.webp", alt: "After the redesign: the home page asks \"What do you need?\" and shows six common questions as cards, with a 60-second primer on the platform's terms open below. Internal names replaced with placeholders." },
-      { src: "assets/img/projects/pm_data_tool_before.webp", alt: "Before the redesign: one long form with an environment picker, a problem ID box for each group and feature checkboxes. Internal names replaced with placeholders." }
+      { src: "assets/img/projects/pm_data_tool_before.webp", alt: "Before the redesign: one long form with an environment picker, a problem ID box for each group and feature checkboxes. Internal names replaced with placeholders." },
+      "<strong>Getting tasks delivered.</strong> Cleanup had no agreed path, and its owner changed with every priority shift. I designed one path with a single gate, protected checked rows from the automated sync, and wrote a handbook other PMs ran without me. Throughput rose to about 200 tasks a week.",
+      {
+        flow: ["PM Cleaning", "PM Checked", "Ready for Delivery", "Delivered"],
+        gate: 1,
+        caption: "A task reaches delivery only after a PM runs the quality checklist."
+      },
+      "<strong>Paying people correctly.</strong> Two near-misses (two QAs approved on one problem, and about $110 paid for labels with no record) showed the payout sheet could not be trusted alone. Now each label is confirmed in the task platform before payment. A pivot-table fix restored about $16,000 experts would have been short.",
+      {
+        bars: [["Flagged by query", 298, 298, "298"], ["Real cases", 69, 298, "69"]],
+        caption: "An edge case sized before leadership decided: about $690 in real exposure."
+      }
+    ],
+    tech: ["Python", "FastAPI", "htmx", "Jinja", "SQLite", "GitHub Actions", "Claude Code", "Google Sheets", "Google Apps Script", "Linear"]
+  },
+
+  {
+    id: "lead-pm",
+    title: "Sole Lead PM on an expert evaluation project",
+    impact: "Cold start to billing sign-off, with completions up from 4 of 12 to 11 of 12 in one week",
+    reality: [
+      "First project as lead, and the only PM",
+      "A client platform bug wiped expert progress",
+      "Logged in as a participant to read the real instructions",
+      "Every budget line closed within budget"
+    ],
+    tags: ["Project management", "Recruitment"],
+    year: "2026",
+    role: "Lead PM, sole PM on the project",
+    featured: true,
+    visual: {
+      bars: [["Start of week", 4, 12, "4 of 12"], ["End of week", 11, 12, "11 of 12"]],
+      goal: [10, "Goal: 10"],
+      caption: "Expert completions in production, out of 12 invited."
+    },
+    body: [
+      "Three months in, I became Lead PM, and the only PM, on a client project that needed about 10 licensed mental-health and social-research practitioners to evaluate wellbeing frameworks. I ran it from setup and recruitment through pilot, production, payouts, billing and closeout.",
+      "In production, a client platform bug wiped expert progress, and the client's 2-hour estimate clashed with the platform's 5-hour minimum. I logged in as a participant to read the real instructions, proposed a 4-hour pay cap, and moved blocked seats to fast responders the same day. The client approved billing, and every budget line closed within budget."
     ]
+  },
+
+
+  {
+    id: "tracker-redesign",
+    title: "Production tracker redesign",
+    impact: "Rebuilt a 24/7 progress tracker and cut over live in a one-hour window",
+    reality: [
+      "Five redundant columns merged into one",
+      "Window picked from edit-history data",
+      "Every change logged during cutover"
+    ],
+    tags: ["Project management", "Change management"],
+    year: "2026",
+    role: "Support PM, then core PM",
+    featured: true,
+    visual: {
+      // Illustration only: placeholder books, initials and column names.
+      sheet: {
+        cols: ["Assignee", "Worker", "Claimed by", "Owner", "Transcriber"],
+        key: "Complex queue",
+        rows: [
+          ["Book 07", "AR", [0, 3], "In Progress", "Transcribing"],
+          ["Book 12", "BL", [2], "Pending", "Complex queue"],
+          ["Book 03", "CM", [1, 4], "Done", "In QA"],
+          ["Book 21", "DT", [3], "In Progress", "Approved"],
+          ["Book 09", "EV", [4, 2], "Open", "Transcribing"]
+        ]
+      },
+      caption: "An illustration, not the real sheet: five columns become one, and generic statuses become stages."
+    },
+    body: [
+      "In my third month I joined a math transcription project that ran on one shared tracker. It used five columns for one job, generic statuses, and had no clear handoff between regular and complex-problem transcribers. My redesign merged the columns, gave each stage its own status, and added a Complex Work Queue.",
+      "Experts worked around the clock, so I staged the layout hidden in the live sheet, used version history to find the quietest hour (after 7 PM Pacific), and cut over in a one-hour window announced 11 hours ahead, logging every change."
+    ],
+    tech: ["Google Sheets", "Google Apps Script"]
+  },
+  {
+    id: "recruitment-pipeline",
+    title: "Expert recruitment pipeline",
+    impact: "Helped hit a quarterly delivery target at 106%",
+    reality: [
+      "Interest form, QA vetting, onboarding, trial, main",
+      "A P0 bug filed with full evidence, fixed in about a week",
+      "Closed the form at the first signs of applicant fraud"
+    ],
+    tags: ["Project management", "Recruitment"],
+    year: "2026",
+    role: "PM, owner of expert recruitment",
+    featured: false,
+    visual: {
+      bars: [["Long-document", 1585, 1700, "1,585"]],
+      goal: [1500, "Target: 1,500"],
+      caption: "The quarter's long-document submissions, 106% of target. A team result."
+    },
+    body: [
+      "I own expert recruitment on a long-document and multimodal project. When a platform bug stopped trial work from reaching review, I filed it as P0 with every affected submission, and it was fixed in about a week. When applications showed signs of fraud, I closed the form and gave recruiters QA's red flags.",
+      "With the pipeline clear, trial workers with access went from 6 to 16 in one day."
+    ],
+    tech: ["Python", "Google Sheets"]
   },
   {
     id: "memento-mori",
@@ -101,7 +186,7 @@ window.PROJECTS = [
     tags: ["Backend", "GIS"],
     year: "2023–2024",
     role: "Database & Web Development Consultant / Lead Backend Developer",
-    featured: true,
+    featured: false,
     body: [
       "A practicum project under the Ateneo Arete Sandbox program, focused on building a public geospatial tool for visualizing blue carbon ecosystems (particularly mangrove restoration sites) for climate-change mitigation.",
       "I led backend development, managing the flow of data from QGIS into the database and onto an interactive Mapbox map embedded on the site. Our small team analyzed requirements, technical constraints, and stakeholder needs to land on a cost-effective, scalable stack (choosing Firebase for hosting).",
@@ -124,7 +209,7 @@ window.PROJECTS = [
     tags: ["Data science"],
     year: "",
     role: "Developer",
-    featured: true,
+    featured: false,
     body: [
       "A classification model that evaluates red-wine quality from physicochemical test attributes. I implemented and compared four supervised algorithms (Decision Tree, Support Vector Machines, Nearest Neighbors, and Naive Bayes) to classify quality accurately.",
       "The project exercised the full data-analysis and model-building loop: preparation, training, evaluation, and comparison across models."
