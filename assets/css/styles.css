@@ -1310,6 +1310,10 @@ h3 {
   :root { --pad: 1.25rem; }
 }
 
+@media (pointer: coarse) and (max-width: 700px) {
+  .nav-links { gap: 0.4rem; } /* the stacked menu only; the wide nav keeps its 26px */
+}
+
 /* Touch: 44px hit areas. Mostly invisible padding or pseudo-elements, so the
    look and the layout stay as designed; mouse users see no change. */
 @media (pointer: coarse) {
@@ -1318,7 +1322,6 @@ h3 {
   .modal-close { width: 44px; height: 44px; }
   .brand { padding-block: 10px; margin-block: -10px; }
   .nav-links a { padding-block: 8px; }
-  .nav-links { gap: 0.4rem; }
   .footer-links a { display: inline-block; padding-block: 11px; margin-block: -11px; }
   .contact-links a,
   .btn-text,

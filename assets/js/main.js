@@ -64,7 +64,7 @@
       if (e.target.tagName === "A") closeNav();
     });
     doc.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && navLinks.classList.contains("open")) { closeNav(); navToggle.focus(); }
+      if (e.key === "Escape" && navLinks.classList.contains("open") && !doc.querySelector("dialog[open]")) { closeNav(); navToggle.focus(); }
     });
   }
 
@@ -207,16 +207,20 @@
       });
       // Notes for what's running, below the scrubber so the chart never shifts under a drag.
       if (ganttNotes) {
-        ganttNotes.innerHTML = notes.map(function (l) {
-          return "<span><strong>" + l.name + "</strong> " + l.note + "</span>";
-        }).join("");
+        ganttNotes.textContent = "";
+        notes.forEach(function (l) {
+          var span = doc.createElement("span");
+          var name = doc.createElement("strong");
+          name.textContent = l.name;
+          span.append(name, " " + l.note);
+          ganttNotes.appendChild(span);
+        });
       }
       cursor.style.setProperty("--t", pct(t) / 100);
       var label = new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
       ganttReadout.innerHTML = "<strong>" + label + "</strong><span>" + active + " running</span><span>" +
         touched + " touched so far</span>";
-      ganttScrub.setAttribute("aria-valuetext", label + ": " + active + " running, " + touched + " touched so far" +
-        notes.map(function (l) { return ". " + l.name + ", " + l.note; }).join(""));
+      ganttScrub.setAttribute("aria-valuetext", label + ": " + active + " running, " + touched + " touched so far");
     };
     ganttScrub.addEventListener("input", renderGantt);
     renderGantt();
@@ -772,8 +776,6 @@
     setTimeout(function () {
       modal.classList.remove("closing");
       modal.close();
-      doc.body.style.overflow = "";
-      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }, reduceMotion ? 0 : 200);
   }
 
@@ -790,6 +792,11 @@
     });
     // Esc: run the closing animation instead of the instant native close.
     modal.addEventListener("cancel", function (e) { e.preventDefault(); closeModal(); });
+    // Every close path ends here, so the scroll lock can't outlive the dialog.
+    modal.addEventListener("close", function () {
+      doc.body.style.overflow = "";
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    });
   }
 })();
 
