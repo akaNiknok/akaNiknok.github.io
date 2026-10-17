@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-17T21:44:01.436Z",
+        "reason": "Claude verified: the only src-less img is #lightbox-img, filled by main.js when a screenshot opens"
+      }
+    ]
+  }
+}

@@ -194,7 +194,7 @@ window.PROJECTS = [
     ],
     tech: ["Mapbox", "Firebase", "QGIS", "Geospatial databases"],
     images: [
-      { src: "assets/img/projects/bluemap.png", alt: "The live Blue Map site: an interactive Mapbox map of the Philippines with pins marking submitted blue-carbon restoration projects, and an instructions panel explaining the mangrove-cover data." }
+      { src: "assets/img/projects/bluemap.webp", alt: "The live Blue Map site: an interactive Mapbox map of the Philippines with pins marking submitted blue-carbon restoration projects, and an instructions panel explaining the mangrove-cover data." }
     ]
   },
   {
@@ -301,7 +301,7 @@ window.PROJECTS = [
     ],
     tech: ["Python", "Kivy"],
     images: [
-      { src: "assets/img/projects/raman_spectrometer_1.png", alt: "The Kivy app running on an Android phone: a camera preview with Activate Camera and Capture buttons above the RGB histogram generated from the captured image." },
+      { src: "assets/img/projects/raman_spectrometer_1.webp", alt: "The Kivy app running on an Android phone: a camera preview with Activate Camera and Capture buttons above the RGB histogram generated from the captured image." },
       { src: "assets/img/projects/raman_spectrometer_2.png", alt: "Spreadsheet analysis of RGB pixel differentials across low-intensity UV, high-intensity UV, low-intensity ambient and near-UV light experiments, with a grouped bar chart of the averages." }
     ]
   },

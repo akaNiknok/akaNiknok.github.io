@@ -63,6 +63,9 @@
     navLinks.addEventListener("click", function (e) {
       if (e.target.tagName === "A") closeNav();
     });
+    doc.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navLinks.classList.contains("open")) { closeNav(); navToggle.focus(); }
+    });
   }
 
   /* ---------- A normal week: scattered cards settle as you scroll ---------- */
@@ -469,10 +472,11 @@
   // Build the "what it actually took" annotation block: dense mono fragments
   // with staggered reveal (delay set via --i; CSS handles the motion).
   function realityLayer(fragments) {
-    var wrap = doc.createElement("div");
+    // spans, not divs: this all sits inside a <button>, which only allows phrasing content
+    var wrap = doc.createElement("span");
     wrap.className = "w-reality";
     wrap.setAttribute("aria-hidden", "true"); // decorative echo of modal content
-    var inner = doc.createElement("div");
+    var inner = doc.createElement("span");
     inner.className = "w-reality-inner";
     fragments.forEach(function (frag, i) {
       var span = doc.createElement("span");
@@ -493,11 +497,11 @@
     btn.className = "work-row";
     btn.setAttribute("aria-haspopup", "dialog");
 
-    var left = doc.createElement("div");
-    var title = doc.createElement("div");
+    var left = doc.createElement("span");
+    var title = doc.createElement("span");
     title.className = "w-title";
     title.innerHTML = p.title + ' <span class="w-arrow" aria-hidden="true">&rarr;</span>';
-    var impact = doc.createElement("div");
+    var impact = doc.createElement("span");
     impact.className = "w-impact";
     impact.textContent = p.impact;
     left.appendChild(title);
@@ -561,10 +565,6 @@
   var modalReality = doc.getElementById("modal-reality");
   var modalTech = doc.getElementById("modal-tech");
   var lastFocused = null;
-
-  function focusables() {
-    return modal.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
-  }
 
   // Small animated chart for a project. `flow`: steps, optional `gate` index.
   // `bars`: [label, value, max, shown], optional `goal`: [value, label] on the same scale.
@@ -749,18 +749,19 @@
       el.textContent = t;
       modalTech.appendChild(el);
     });
-    modal.hidden = false;
+    modal.querySelector(".modal-panel").scrollTop = 0;
+    modal.showModal();
     doc.body.style.overflow = "hidden";
     var close = modal.querySelector(".modal-close");
     if (close) close.focus();
   }
 
   function closeModal() {
-    if (!modal || modal.hidden || modal.classList.contains("closing")) return;
+    if (!modal || !modal.open || modal.classList.contains("closing")) return;
     modal.classList.add("closing");
     setTimeout(function () {
       modal.classList.remove("closing");
-      modal.hidden = true;
+      modal.close();
       doc.body.style.overflow = "";
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }, reduceMotion ? 0 : 200);
@@ -773,22 +774,12 @@
   });
 
   if (modal) {
+    // A click on the dialog element itself (not the panel) is a click on the backdrop.
     modal.addEventListener("click", function (e) {
-      if (e.target.hasAttribute("data-close")) closeModal();
+      if (e.target === modal || e.target.hasAttribute("data-close")) closeModal();
     });
-    doc.addEventListener("keydown", function (e) {
-      if (modal.hidden) return;
-      // The lightbox sits on top and handles its own Esc/Tab.
-      if (lightbox && lightbox.open) return;
-      if (e.key === "Escape") { closeModal(); return; }
-      if (e.key === "Tab") {
-        var f = focusables();
-        if (!f.length) return;
-        var first = f[0], last = f[f.length - 1];
-        if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    });
+    // Esc: run the closing animation instead of the instant native close.
+    modal.addEventListener("cancel", function (e) { e.preventDefault(); closeModal(); });
   }
 })();
 

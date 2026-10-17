@@ -98,6 +98,7 @@
       transition: transform 0.2s ease, box-shadow 0.25s ease;
     }
     .toolbar .download:hover {
+      color: #042a33; /* beat .toolbar a:hover, which would put accent text on the cyan fill */
       transform: translateY(-2px);
       box-shadow: 0 10px 26px color-mix(in srgb, var(--accent-bright) 40%, transparent);
     }
@@ -217,7 +218,7 @@
     }
     .job strong { color: var(--text); font-weight: 600; }
     .job-title a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-    .job-title a:hover { color: var(--accent-bright); }
+    .job-title a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
     .skills p { margin: 0 0 8px; color: var(--soft); }
     .skills p:last-child { margin-bottom: 0; }
