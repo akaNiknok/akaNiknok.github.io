@@ -152,6 +152,7 @@
   var ganttChart = doc.getElementById("gantt-chart");
   var ganttScrub = doc.getElementById("gantt-scrub");
   var ganttReadout = doc.getElementById("gantt-readout");
+  var ganttNotes = doc.getElementById("gantt-notes");
   if (ganttChart && ganttScrub) {
     var DAY = 864e5;
     var g0 = Date.parse("2025-11-01");
@@ -165,14 +166,13 @@
       var e = p.e ? Date.parse(p.e) : gNow;
       var lane = doc.createElement("div");
       lane.className = "g-lane";
-      if (p.note) lane.title = p.name + ": " + p.note;
       lane.innerHTML =
         '<span class="g-label">' + p.name + " <em>" + p.role + "</em>" +
         (p.vip ? ' <b class="g-vip">VIP</b>' : "") + "</span>" +
         '<span class="g-track"><span class="g-bar' + (p.e ? "" : " g-open") + '" style="left:' +
         pct(s) + "%;width:" + Math.max(pct(e) - pct(s), 0.8) + '%"></span></span>';
       ganttChart.appendChild(lane);
-      return { el: lane, s: s, e: p.e ? e : Infinity, role: p.role }; // open bars never end, even if the scrub rounds past now
+      return { el: lane, s: s, e: p.e ? e : Infinity, name: p.name, note: p.note }; // open bars never end, even if the scrub rounds past now
     });
 
     var axis = doc.createElement("div");
@@ -195,18 +195,28 @@
     ganttScrub.value = String(gDays);
     var renderGantt = function () {
       var t = g0 + Number(ganttScrub.value) * DAY;
-      var active = 0, touched = 0;
+      var active = 0, touched = 0, notes = [];
       lanes.forEach(function (l) {
         var state = t < l.s ? "future" : t > l.e ? "past" : "active";
         if (state !== "future") touched++;
-        if (state === "active") active++;
+        if (state === "active") {
+          active++;
+          if (l.note) notes.push(l);
+        }
         l.el.dataset.state = state;
       });
+      // Notes for what's running, below the scrubber so the chart never shifts under a drag.
+      if (ganttNotes) {
+        ganttNotes.innerHTML = notes.map(function (l) {
+          return "<span><strong>" + l.name + "</strong> " + l.note + "</span>";
+        }).join("");
+      }
       cursor.style.setProperty("--t", pct(t) / 100);
       var label = new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
       ganttReadout.innerHTML = "<strong>" + label + "</strong><span>" + active + " running</span><span>" +
         touched + " touched so far</span>";
-      ganttScrub.setAttribute("aria-valuetext", label + ": " + active + " running, " + touched + " touched so far");
+      ganttScrub.setAttribute("aria-valuetext", label + ": " + active + " running, " + touched + " touched so far" +
+        notes.map(function (l) { return ". " + l.name + ", " + l.note; }).join(""));
     };
     ganttScrub.addEventListener("input", renderGantt);
     renderGantt();
