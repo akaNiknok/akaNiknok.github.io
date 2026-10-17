@@ -680,12 +680,20 @@ h3 {
 /* Messy tracker that tidies itself: .is-clean collapses the extra columns and swaps the text. */
 .sheet { overflow-x: auto; font-size: 11.5px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-elev); }
 .sheet-row { display: flex; }
-.sheet-row > span { flex: none; padding: 0.4rem 0.55rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); white-space: nowrap; overflow: hidden; color: var(--text-soft); }
+.sheet-row > span { flex: none; padding: 0.4rem 0.55rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-soft); }
 .sheet-row:last-child > span { border-bottom: 0; }
 .sheet-head > span { font-weight: 600; color: var(--text-faint); background: var(--bg); }
-.c-book { width: 5.4em; }
+.c-book { width: 5.8em; }
 .c-who { width: 7em; }
-.sheet-row > .c-status { flex: 1 0 8em; border-right: 0; }
+.sheet-row > .c-status { flex: 1 1 6em; min-width: 6.6em; border-right: 0; white-space: normal; }
+.sheet-row > .c-who { flex-shrink: 1; }
+@media (max-width: 480px) {
+  .modal-panel { padding-inline: 1.25rem; }
+  .viz { padding-inline: 0.8rem; }
+  .sheet { font-size: 10.5px; }
+  .sheet-row > span { padding-inline: 0.3rem; }
+  .c-book { width: 5.4em; }
+}
 .sheet .c-who { transition: width 0.8s var(--ease), padding 0.8s var(--ease), opacity 0.4s ease, border-width 0.8s, background 0.6s ease; }
 .sheet.is-clean .extra { width: 0; padding-inline: 0; opacity: 0; border-right-width: 0; }
 .sheet .hl { background: rgba(250, 204, 21, 0.28); }
