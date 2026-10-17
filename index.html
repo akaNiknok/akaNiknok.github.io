@@ -9,6 +9,13 @@
   <meta property="og:title" content="Austin G. Imperial · AI Project Manager">
   <meta property="og:description" content="I run AI data projects and build the tools they run on.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://akaniknok.github.io/">
+  <meta property="og:image" content="https://akaniknok.github.io/assets/img/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Austin G. Imperial, AI Project Manager: I run AI data projects and build the tools they run on.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://akaniknok.github.io/">
 
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico?v=2">
   <link rel="icon" type="image/svg+xml" href="assets/logo/agi-app-icon.svg?v=2">
@@ -74,13 +81,13 @@
         </div>
       </div>
       <div class="hero-portrait">
-        <img src="assets/img/Grad_Pic_Casual.png" alt="Portrait of Austin G. Imperial" width="360" height="450">
+        <img src="assets/img/portrait-800.webp" srcset="assets/img/portrait-400.webp 400w, assets/img/portrait-800.webp 800w" sizes="(max-width: 700px) 168px, 280px" alt="Portrait of Austin G. Imperial" width="800" height="1000" fetchpriority="high">
       </div>
     </section>
 
     <!-- A normal week: scattered on arrival, settles as you scroll (main.js sets --p). -->
     <section class="section settle" id="settle" aria-labelledby="settle-label">
-      <p class="section-label" id="settle-label">A normal week, settling as you scroll</p>
+      <h2 class="section-label" id="settle-label">A normal week, settling as you scroll</h2>
       <ol class="settle-list">
         <li style="--x:-18;--y:34;--r:-7">
           <span class="settle-task">Same output, graded 0.15 by one run and 0.85 by the next</span>
@@ -120,7 +127,7 @@
 
     <!-- About + Experience -->
     <section class="section" id="about">
-      <p class="section-label">About</p>
+      <h2 class="section-label">About</h2>
       <div class="prose">
         <p>
           BS Management Information Systems from Ateneo de Manila University, specializing in
@@ -130,7 +137,7 @@
       </div>
 
       <div class="section-head">
-        <p class="section-label">Experience</p>
+        <h2 class="section-label">Experience</h2>
         <div class="depth-toggle" role="group" aria-label="How much detail">
           <button type="button" data-depth="skim" aria-pressed="true">30-second version</button>
           <button type="button" data-depth="read" aria-pressed="false">5-minute version</button>
@@ -190,6 +197,7 @@
             <div class="gantt-readout" id="gantt-readout"></div>
             <div class="gantt-chart" id="gantt-chart"></div>
             <input class="gantt-scrub" id="gantt-scrub" type="range" min="0" max="1" value="1" aria-label="Move through the months">
+            <p class="gantt-notes" id="gantt-notes"></p>
             <figcaption>Every project I've run or supported at Pareto, codenames removed. Drag to move through the months.</figcaption>
           </figure>
         </li>
@@ -307,7 +315,7 @@ Solution: Making a program that eliminates rare combinations by
 
     <!-- Reviewer calibration demo (main.js builds the interactive parts). -->
     <section class="section" id="calibration">
-      <p class="section-label">A judgment call</p>
+      <h2 class="section-label">A judgment call</h2>
       <h2>Who counts as “drifting” depends on what you call normal.</h2>
       <p class="lede">
         To find reviewers whose scoring had drifted, I measured each one's score distribution
@@ -337,7 +345,7 @@ Solution: Making a program that eliminates rare combinations by
 
     <!-- Mistakes -->
     <section class="section" id="mistakes">
-      <p class="section-label">Mistakes I caught</p>
+      <h2 class="section-label">Mistakes I caught</h2>
       <h2>I'd rather catch my own mistakes than defend them.</h2>
       <ol class="changelog">
         <li>
@@ -390,7 +398,7 @@ Solution: Making a program that eliminates rare combinations by
 
     <!-- What people say -->
     <section class="section" id="recognition">
-      <p class="section-label">What people said</p>
+      <h2 class="section-label">What people said</h2>
       <div class="arc">
         <blockquote class="arc-quote arc-before">
           <p>“He still needs some handholding, but nothing that can't be fixed by more experience.”</p>
@@ -411,14 +419,14 @@ Solution: Making a program that eliminates rare combinations by
 
     <!-- Selected work -->
     <section class="section" id="work">
-      <p class="section-label">Selected work</p>
+      <h2 class="section-label">Selected work</h2>
       <ul class="work-list" id="work-list" aria-label="Selected projects"></ul>
       <button class="btn btn-text work-more" id="work-more" type="button" aria-expanded="false"></button>
     </section>
 
     <!-- Now -->
     <section class="section" id="now">
-      <p class="section-label">Now</p>
+      <h2 class="section-label">Now</h2>
       <ul class="now-list">
         <li>Looking for a PM role in AI delivery.</li>
         <li>Rewriting this site.</li>
@@ -454,10 +462,9 @@ Solution: Making a program that eliminates rare combinations by
     </div>
   </footer>
 
-  <!-- Project detail dialog -->
-  <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel" role="document">
+  <!-- Project detail dialog. Native <dialog>: Esc, focus trap, inert page, top layer. -->
+  <dialog class="modal" id="project-modal" aria-labelledby="modal-title">
+    <div class="modal-panel">
       <button class="modal-close" type="button" aria-label="Close" data-close>&times;</button>
       <p class="modal-eyebrow" id="modal-eyebrow"></p>
       <h2 class="modal-title" id="modal-title"></h2>
@@ -465,7 +472,7 @@ Solution: Making a program that eliminates rare combinations by
       <div class="modal-reality" id="modal-reality" hidden></div>
       <div class="modal-tech" id="modal-tech"></div>
     </div>
-  </div>
+  </dialog>
 
   <!-- Screenshot lightbox. <dialog> gives us Esc, focus return, and top-layer for free. -->
   <dialog class="lightbox" id="lightbox" aria-label="Enlarged screenshot">
